@@ -1,0 +1,4510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamBrixs Residential Builders | Building Dreams. Creating Lasting Value. | Chennai</title>
+    <meta name="description"
+        content="DreamBrixs Residential Builders - Thoughtfully planned homes and construction solutions in Chennai. 25+ years of excellence, zero-cost overruns, 10-year structural warranty.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #0d1117;
+            --primary-navy: #0a1628;
+            --accent-yellow: #F5B800;
+            --accent-orange: #E89B00;
+            --text-dark: #1a1a1a;
+            --text-muted: #555;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        /* Short summaries under headings stay centered */
+        .text-center p,
+        section .text-center .text-muted,
+        section .text-center p.text-muted,
+        p.text-muted.mt-2,
+        .text-uppercase+h2+p,
+        h2+p.text-muted {
+            text-align: center !important;
+        }
+
+        /* Top Bar Mobile Better */
+        .top-bar {
+            background: var(--primary-navy);
+            color: #fff;
+            font-size: 12.5px;
+            padding: 8px 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                font-size: 11.5px;
+                padding: 10px 0;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 4px;
+            }
+
+            .top-bar span,
+            .top-bar a {
+                display: inline-block;
+                margin: 2px 6px;
+            }
+        }
+
+        /* Dropdown on Hover */
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+
+        .dropdown-menu.mega {
+            margin-top: 8px !important; } .dropdown-menu.mega::before { content: ''; position: absolute; top: -20px; left: 0; right: 0; height: 20px; background: transparent;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .navbar,
+        .btn {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-navy);
+            color: #fff;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #fff !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            padding: 12px 0;
+        }
+
+        .navbar-brand img {
+            height: 52px;
+            width: auto;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            margin: 0 8px;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-yellow) !important;
+        }
+
+        .btn-consult {
+            background: var(--accent-yellow);
+            color: #000 !important;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 10px 22px;
+            border: none;
+        }
+
+        .btn-consult:hover {
+            background: var(--accent-orange);
+            transform: translateY(-2px);
+        }
+
+        /* Mega Dropdown */
+        @media (min-width: 992px) {
+            .dropdown-menu.mega {
+                width: 780px;
+                max-width: calc(100vw - 30px);
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+            }
+        }
+
+        .dropdown-menu.mega {
+            width: 780px;
+            padding: 20px;
+            border: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+                        .mega-item {
+            position: relative;
+            padding: 14px 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .mega-item:hover {
+            background: #fff8e6;
+            transform: translateY(-2px);
+        }
+
+        .mega-item i {
+            font-size: 22px;
+            color: var(--accent-yellow);
+            margin-bottom: 6px;
+            display: block;
+            pointer-events: none;
+        }
+
+        .mega-item a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 13.5px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .mega-item a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 92vh;
+            background: linear-gradient(rgba(10, 22, 40, 0.75), rgba(10, 22, 40, 0.55)), url('image/home-hero-bg.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-image: linear-gradient(rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.6)), url('image/home-hero-bg-mob.png');
+                min-height: 80vh;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(245, 184, 0, 0.4);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge span {
+            color: var(--accent-yellow);
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-yellow);
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 620px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 30px;
+            margin-right: 12px;
+        }
+
+        .btn-hero-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            background: transparent;
+        }
+
+        .btn-hero-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Stats */
+        .stats-section {
+            background: #fff;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-navy);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+
+        /* About */
+        .about-section {
+            padding: 90px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+        }
+
+        .about-section h2 span {
+            color: var(--accent-yellow);
+        }
+
+        .feature-check {
+            color: var(--accent-yellow);
+            margin-right: 8px;
+        }
+
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            font-weight: 700;
+        }
+
+        /* Rotating Dots */
+        .rotating-dots {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+        }
+
+        .rotating-dots.top-left {
+            top: -40px;
+            left: -40px;
+        }
+
+        .rotating-dots.bottom-right {
+            bottom: -40px;
+            right: -40px;
+        }
+
+        .dot-circle,
+        .dot-rect {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            opacity: 0.6;
+            animation: rotateDots 12s linear infinite;
+        }
+
+        .dot-rect {
+            border-radius: 4px;
+        }
+
+        .dot-circle:nth-child(1) {
+            width: 12px;
+            height: 12px;
+            top: 10px;
+            left: 20px;
+        }
+
+        .dot-circle:nth-child(2) {
+            width: 8px;
+            height: 8px;
+            top: 40px;
+            left: 60px;
+            animation-delay: -2s;
+        }
+
+        .dot-rect:nth-child(3) {
+            width: 10px;
+            height: 10px;
+            top: 70px;
+            left: 30px;
+        }
+
+        .dot-circle:nth-child(4) {
+            width: 6px;
+            height: 6px;
+            top: 20px;
+            left: 90px;
+            animation-delay: -4s;
+        }
+
+        @keyframes rotateDots {
+            from {
+                transform: rotate(0deg) translateX(20px) rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg) translateX(20px) rotate(-360deg);
+            }
+        }
+
+        /* Why Choose Enhanced */
+        .why-section {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 28px 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-yellow), #ff9f43);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .why-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .why-card:hover {
+            transform: translateY(-14px);
+            box-shadow: 0 25px 50px rgba(245, 184, 0, 0.15);
+            border-color: rgba(245, 184, 0, 0.2);
+        }
+
+        .why-icon-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff8e6, #ffe8c2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: var(--accent-yellow);
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover .why-icon-wrap {
+            background: var(--accent-yellow);
+            color: #000;
+            transform: rotate(-8deg) scale(1.08);
+            box-shadow: 0 10px 25px rgba(245, 184, 0, 0.3);
+        }
+
+        .why-card h5 {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--primary-navy);
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.65;
+        }
+
+        .why-dots {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 2px dashed var(--accent-yellow);
+            opacity: 0.25;
+            animation: spin 22s linear infinite;
+            pointer-events: none;
+        }
+
+        .why-dots.d1 {
+            top: -70px;
+            right: -70px;
+        }
+
+        .why-dots.d2 {
+            bottom: -90px;
+            left: -90px;
+            animation-direction: reverse;
+        }
+
+        /* Enhanced CTA */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: spin 20s linear infinite;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 180px;
+            height: 180px;
+            border: 2px dashed rgba(245, 184, 0, 0.4);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 25s linear infinite reverse;
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+        }
+
+        .btn-cta {
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            border: none;
+            transition: all 0.3s ease;
+            margin-right: 12px;
+        }
+
+        .btn-cta:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            background: transparent;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-outline:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Testimonials Carousel Premium */
+        .testimonials-carousel-section {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-slide {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .review-slide::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 30px;
+            font-size: 90px;
+            color: var(--accent-yellow);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .review-slide .stars {
+            color: var(--accent-yellow);
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .review-slide p {
+            font-size: 17px;
+            line-height: 1.75;
+            color: #333;
+            margin-bottom: 22px;
+            font-style: italic;
+        }
+
+        .review-slide .client-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .review-slide .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-yellow), #ff9f43);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+
+        .carousel-control-prev {
+            left: -10px;
+        }
+
+        .carousel-control-next {
+            right: -10px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(0);
+        }
+
+        /* Services */
+        .services-section {
+            padding: 80px 0;
+        }
+
+        /* New Services Design */
+        .services-fresh {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-fresh::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 24s linear infinite;
+        }
+
+        .service-fresh-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.45s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .service-fresh-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(245, 184, 0, 0.12);
+        }
+
+        .service-fresh-card img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-fresh-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .service-fresh-body {
+            padding: 22px 20px 24px;
+        }
+
+        .service-fresh-body h5 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-navy);
+        }
+
+        .service-fresh-body p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .service-fresh-body a {
+            color: var(--accent-yellow);
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .service-fresh-body a i {
+            transition: transform 0.3s;
+        }
+
+        .service-fresh-card:hover a i {
+            transform: translateX(4px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 90px 0;
+            background: #fff;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 14px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(245, 184, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary-navy);
+        }
+
+        .faq-question i {
+            color: var(--accent-yellow);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 20px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 18px;
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+        }
+
+        .services-new {
+            padding: 90px 0;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-new::before {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 220px;
+            height: 220px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: spin 26s linear infinite reverse;
+        }
+
+        .service-new-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 340px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .service-new-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-new-card:hover img {
+            transform: scale(1.12);
+        }
+
+        .service-new-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.9) 0%, rgba(10, 22, 40, 0.15) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            color: #fff;
+            transition: background 0.4s ease;
+        }
+
+        .service-new-card:hover .service-new-overlay {
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.95) 0%, rgba(245, 184, 0, 0.25) 100%);
+        }
+
+        .service-new-card h5 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            transform: translateY(6px);
+            transition: transform 0.4s;
+        }
+
+        .service-new-card:hover h5 {
+            transform: translateY(0);
+        }
+
+        .service-new-card p {
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s 0.05s;
+            margin-bottom: 10px;
+        }
+
+        .service-new-card:hover p {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+
+        .service-new-card .view-link {
+            color: var(--accent-yellow);
+            font-weight: 600;
+            font-size: 13px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s 0.1s;
+            text-decoration: none;
+        }
+
+        .service-new-card:hover .view-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* New CTA Design */
+        .cta-fresh {
+            background: #0a1628;
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .cta-fresh::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 184, 0, 0.15) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        .cta-fresh h2 {
+            font-size: 46px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .cta-fresh .highlight {
+            color: var(--accent-yellow);
+        }
+
+        .cta-btn {
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 600;
+            padding: 15px 34px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(245, 184, 0, 0.35);
+        }
+
+        .cta-btn-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+            font-weight: 600;
+            padding: 13px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-outline:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        /* Better WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 62px;
+            height: 62px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: waBounce 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            animation: none;
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: waRing 2s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes waBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes waRing {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Fresh Form */
+        .form-fresh {
+            background: #f8f9fa;
+            padding: 90px 0;
+        }
+
+        .form-box {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .form-left {
+            background: linear-gradient(160deg, #0a1628, #1a2a4a);
+            color: #fff;
+            padding: 50px 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-left h3 {
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .form-left p {
+            opacity: 0.85;
+            font-size: 15px;
+        }
+
+        .form-right {
+            padding: 40px 36px;
+        }
+
+        .form-right .form-control,
+        .form-right .form-select {
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            padding: 12px 16px;
+            transition: all 0.3s;
+        }
+
+        .form-right .form-control:focus,
+        .form-right .form-select:focus {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 0 3px rgba(245, 184, 0, 0.15);
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 380px;
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+        }
+
+        .service-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .service-card:hover .service-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(245, 184, 0, 0.2) 100%);
+        }
+
+        /* Testimonials Carousel */
+        .testimonials {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        /* Enhanced Quality Control */
+        .quality-section {
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-section::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 280px;
+            height: 280px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: spin 30s linear infinite reverse;
+        }
+
+        .quality-point {
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--accent-yellow);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-point::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(245, 184, 0, 0.08), transparent);
+            transition: width 0.4s ease;
+        }
+
+        .quality-point:hover {
+            transform: translateX(8px);
+            box-shadow: 0 12px 30px rgba(245, 184, 0, 0.15);
+        }
+
+        .quality-point:hover::before {
+            width: 100%;
+        }
+
+        .quality-point .num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .quality-img-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .quality-img-wrap img {
+            width: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .quality-img-wrap:hover img {
+            transform: scale(1.05);
+        }
+
+        .quality-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(10, 22, 40, 0.9);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            backdrop-filter: blur(6px);
+        }
+
+        /* Unique Quality Control */
+        .quality-unique {
+            background: linear-gradient(180deg, #0a1628 0%, #122036 100%);
+            color: #fff;
+            padding: 90px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-unique::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 28s linear infinite;
+        }
+
+        .quality-unique h2 {
+            color: #fff;
+        }
+
+        .quality-unique .accent {
+            color: var(--accent-yellow);
+        }
+
+        .q-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px 24px;
+            height: 100%;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .q-card:hover {
+            background: rgba(245, 184, 0, 0.12);
+            transform: translateY(-8px);
+            border-color: rgba(245, 184, 0, 0.4);
+        }
+
+        .q-card .q-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .q-card h5 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .q-card p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Portfolio Filter + Lightbox */
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #ddd;
+            color: #555;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+            border-color: var(--accent-yellow);
+        }
+
+        .portfolio-item {
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item.hide {
+            display: none !important;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.show {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        /* Enhanced Blog */
+        .blog-section {
+            padding: 90px 0;
+            background: #f8f9fa;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.45s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .blog-card .card-body {
+            padding: 24px;
+        }
+
+        .blog-meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .blog-card h5 {
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .blog-link {
+            color: var(--accent-yellow);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .blog-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-link i {
+            transform: translateX(4px);
+        }
+
+        /* Unique Premium Testimonials */
+        .testimonials-premium {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 60%);
+            position: relative;
+            overflow: hidden;
+            padding: 90px 0;
+        }
+
+        .testimonials-premium::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(var(--accent-yellow) 20%, transparent 20%);
+            background-size: 16px 16px;
+            border-radius: 50%;
+            opacity: 0.25;
+            animation: rotate-pulse 18s linear infinite;
+        }
+
+        .review-premium {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px 28px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .review-premium::before {
+            content: '"';
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--accent-yellow);
+            opacity: 0.18;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .review-premium:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(245, 184, 0, 0.12);
+            border-color: rgba(245, 184, 0, 0.3);
+        }
+
+        .review-premium .stars {
+            color: var(--accent-yellow);
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .review-premium p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-premium .client {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-premium .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-yellow), #ff9f43);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .review-premium .client strong {
+            display: block;
+            font-size: 14px;
+            color: var(--primary-navy);
+        }
+
+        .review-premium .client small {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .review-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 30px;
+            height: 100%;
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+            margin-bottom: 12px;
+        }
+
+        /* Process */
+        .process-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .process-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Enhanced Work Process */
+        .process-section {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 90px 0;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 24s linear infinite;
+        }
+
+        .process-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 24px 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(245, 184, 0, 0.12);
+            border-color: rgba(245, 184, 0, 0.25);
+        }
+
+        .process-num {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-yellow), #ff9f43);
+            color: #000;
+            font-weight: 800;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(245, 184, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .process-card:hover .process-num {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(245, 184, 0, 0.4);
+        }
+
+        .process-card h5 {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--primary-navy);
+        }
+
+        .process-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.65;
+        }
+
+        /* Enhanced Portfolio */
+        .portfolio-section {
+            padding: 90px 0;
+            background: #fff;
+        }
+
+        .portfolio-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 280px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.45s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.8) 0%, rgba(10, 22, 40, 0.1) 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h6 {
+            color: #fff;
+            font-weight: 700;
+            margin: 0;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay h6 {
+            transform: translateY(0);
+        }
+
+        /* Multi-item Review Carousel */
+        #reviewCarousel {
+            position: relative;
+            padding: 0 54px;
+        }
+        .review-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-item {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 26px;
+            box-shadow: 0 10px 30px rgba(10, 22, 40, 0.05);
+            border: 1px solid rgba(10, 22, 40, 0.07);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+        .review-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(245, 184, 0, 0.16);
+            border-color: rgba(245, 184, 0, 0.35);
+        }
+        .review-item .stars {
+            color: var(--accent-yellow);
+            font-size: 14px;
+            display: flex;
+            gap: 4px;
+            margin-bottom: 14px;
+        }
+        .review-item p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: #475569;
+            margin-bottom: 20px;
+            font-style: normal;
+            flex-grow: 1;
+        }
+        .review-item .client {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+        .review-item .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-yellow), #e89b00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a1628;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(245, 184, 0, 0.25);
+        }
+        .review-item .client-info strong {
+            display: block;
+            font-size: 15px;
+            color: var(--primary-navy);
+            line-height: 1.25;
+            margin-bottom: 3px;
+        }
+        .review-item .client-info small {
+            font-size: 12.5px;
+            color: #64748b;
+        }
+        #reviewCarousel .carousel-control-prev,
+        #reviewCarousel .carousel-control-next {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.95;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transition: all 0.25s ease;
+            z-index: 5;
+            border: 2px solid #ffffff;
+        }
+        #reviewCarousel .carousel-control-prev:hover,
+        #reviewCarousel .carousel-control-next:hover {
+            opacity: 1;
+            background: var(--accent-orange);
+            transform: translateY(-50%) scale(1.08);
+        }
+        #reviewCarousel .carousel-control-prev {
+            left: 0;
+        }
+        #reviewCarousel .carousel-control-next {
+            right: 0;
+        }
+        #reviewCarousel .carousel-control-prev-icon,
+        #reviewCarousel .carousel-control-next-icon {
+            filter: brightness(0);
+            width: 18px;
+            height: 18px;
+        }
+        @media (max-width: 991px) {
+            #reviewCarousel {
+                padding: 0 10px 55px 10px;
+            }
+            .review-row {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            #reviewCarousel .carousel-control-prev {
+                top: auto;
+                bottom: 0;
+                left: calc(50% - 56px);
+                transform: none;
+            }
+            #reviewCarousel .carousel-control-next {
+                top: auto;
+                bottom: 0;
+                right: calc(50% - 56px);
+                transform: none;
+            }
+            #reviewCarousel .carousel-control-prev:hover,
+            #reviewCarousel .carousel-control-next:hover {
+                transform: scale(1.08);
+            }
+        }
+        .process-num {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 18px;
+        }
+
+        /* Enhanced Project Showcase */
+        .project-showcase {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-showcase::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 25s linear infinite;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 18px;
+        }
+
+        .showcase-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 280px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .showcase-card.featured {
+            grid-row: span 2;
+            height: 580px;
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.85) 0%, rgba(10, 22, 40, 0.2) 55%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 22px;
+            color: #fff;
+            transition: background 0.4s ease;
+        }
+
+        .showcase-card:hover .showcase-overlay {
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.95) 0%, rgba(245, 184, 0, 0.25) 100%);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .showcase-info h5 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            transform: translateY(8px);
+            transition: transform 0.4s ease;
+        }
+
+        .showcase-card:hover .showcase-info h5 {
+            transform: translateY(0);
+        }
+
+        .showcase-info p {
+            font-size: 13px;
+            opacity: 0.85;
+            margin-bottom: 10px;
+            transform: translateY(12px);
+            opacity: 0;
+            transition: all 0.4s ease 0.05s;
+        }
+
+        .showcase-card:hover .showcase-info p {
+            transform: translateY(0);
+            opacity: 0.9;
+        }
+
+        .view-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-yellow);
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .showcase-card:hover .view-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .view-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-card:hover .view-link i {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 991px) {
+            .showcase-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .showcase-card.featured {
+                grid-column: span 2;
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-card.featured,
+            .showcase-card {
+                height: 280px;
+                grid-column: span 1;
+            }
+        }
+
+        /* Floating Buttons Enhanced */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 64px;
+            height: 64px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: waPulse 2.5s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12);
+            animation: none;
+        }
+
+        .whatsapp-float::after {
+            content: 'Chat with us';
+            position: absolute;
+            right: 75px;
+            background: #0a1628;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes waPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 104px;
+            right: 28px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-yellow);
+            color: #000;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 999;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            background: #ffcc33;
+        }
+
+        /* Modern Contact Form */
+        .contact-modern {
+            background: linear-gradient(135deg, #0a1628 0%, #122036 100%);
+            padding: 90px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-modern::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: spin 22s linear infinite;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 32px;
+            backdrop-filter: blur(8px);
+        }
+
+        .contact-card .form-control,
+        .contact-card .form-select {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+
+        .contact-card .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-card .form-control:focus,
+        .contact-card .form-select:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 0 3px rgba(245, 184, 0, 0.15);
+            color: #fff;
+        }
+
+        /* Modern CTA */
+        .cta-modern {
+            background: linear-gradient(120deg, #0a1628 0%, #1a2a4a 50%, #0a1628 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .cta-modern::before,
+        .cta-modern::after {
+            content: '';
+            position: absolute;
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: spin 20s linear infinite;
+        }
+
+        .cta-modern::before {
+            width: 200px;
+            height: 200px;
+            top: -60px;
+            left: -60px;
+        }
+
+        .cta-modern::after {
+            width: 160px;
+            height: 160px;
+            bottom: -50px;
+            right: -50px;
+            animation-direction: reverse;
+        }
+
+        .cta-modern h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-modern p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .btn-cta-modern {
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 40px;
+            border: none;
+            transition: all 0.3s ease;
+            margin: 0 8px;
+            display: inline-block;
+        }
+
+        .btn-cta-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(245, 184, 0, 0.4);
+        }
+
+        .btn-cta-outline-modern {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 40px;
+            background: transparent;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 8px;
+            display: inline-block;
+        }
+
+        .btn-cta-outline-modern:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        /* Fresh Footer */
+        .footer-fresh {
+            background: #070d18;
+            color: #94a3b8;
+            padding: 75px 0 25px;
+            position: relative;
+        }
+        .footer-fresh h5 {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 22px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .footer-fresh h5::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 28px;
+            height: 2px;
+            background: var(--accent-yellow);
+            border-radius: 2px;
+        }
+        .footer-fresh ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .footer-fresh ul li {
+            margin-bottom: 9px;
+        }
+        .footer-fresh ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+        .footer-fresh ul li a::before {
+            content: "\203A";
+            color: var(--accent-yellow);
+            font-size: 16px;
+            line-height: 1;
+            transition: transform 0.25s ease;
+        }
+        .footer-fresh ul li a:hover {
+            color: var(--accent-yellow);
+            transform: translateX(4px);
+        }
+        .footer-fresh ul li a:hover::before {
+            transform: translateX(2px);
+        }
+        .footer-fresh .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 13.5px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .footer-fresh .footer-contact-item i {
+            color: var(--accent-yellow);
+            font-size: 15px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            width: 16px;
+            text-align: center;
+        }
+        .footer-logo {
+            height: 48px;
+            margin-bottom: 16px;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-yellow);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            margin-top: 30px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .mega-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .dropdown-menu.mega {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .about-section h2 {
+                font-size: 32px;
+            }
+
+            .mega-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Responsive alignment fixes and refreshed WhatsApp button */
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+        }
+
+        .container,
+        .container-fluid {
+            min-width: 0;
+        }
+
+        .row {
+            --bs-gutter-x: 1.5rem;
+        }
+
+        .navbar .container {
+            gap: 12px;
+        }
+
+        .navbar-brand {
+            min-width: 0;
+            margin-right: auto;
+        }
+
+        .navbar-brand img {
+            display: block;
+            max-width: min(100%, 220px);
+            height: 52px;
+            object-fit: contain;
+        }
+
+        .navbar-toggler {
+            flex-shrink: 0;
+        }
+
+        .nav-link {
+            overflow-wrap: anywhere;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            text-align: left;
+        }
+
+        .btn-hero,
+        .btn-hero-outline,
+        .btn-cta,
+        .btn-cta-outline,
+        .cta-btn,
+        .cta-btn-outline {
+            max-width: 100%;
+            white-space: normal;
+            text-align: center;
+        }
+
+        .about-img-wrap img,
+        .quality-img-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .showcase-grid {
+            min-width: 0;
+        }
+
+        .review-row {
+            min-width: 0;
+        }
+
+        .review-slide,
+        .review-premium,
+        .review-item,
+        .why-card,
+        .process-card,
+        .service-fresh-card,
+        .contact-card,
+        .form-box {
+            min-width: 0;
+        }
+
+        .contact-card,
+        .form-box {
+            overflow-wrap: anywhere;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: max(18px, env(safe-area-inset-right));
+            bottom: max(20px, env(safe-area-inset-bottom));
+            z-index: 1100;
+            width: auto;
+            min-width: 58px;
+            height: 58px;
+            padding: 0 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            border: 1px solid rgba(255, 255, 255, .65);
+            border-radius: 999px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff;
+            font-size: 27px;
+            line-height: 1;
+            text-decoration: none;
+            box-shadow: 0 10px 28px rgba(18, 140, 126, .32);
+            animation: none;
+            isolation: isolate;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .whatsapp-float i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .whatsapp-float::before {
+            content: none;
+        }
+
+        .whatsapp-float::after {
+            content: 'Chat with us';
+            position: static;
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 0;
+            border-radius: 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 1;
+            transform: none;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover,
+        .whatsapp-float:focus-visible {
+            color: #fff;
+            background: linear-gradient(135deg, #20bd5a 0%, #087f72 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(18, 140, 126, .4);
+        }
+
+        .whatsapp-float:focus-visible {
+            outline: 3px solid #0a1628;
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                padding: 12px 0 6px;
+            }
+
+            .navbar-nav {
+                align-items: stretch;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0;
+                padding: 10px 4px;
+            }
+
+            .navbar-nav .btn-consult {
+                display: inline-block;
+                margin-top: 8px;
+                text-align: center;
+            }
+
+            .dropdown:hover>.dropdown-menu {
+                display: none !important;
+            }
+
+            /* Force mobile services dropdown to show when .show class is present */
+            .nav-item.dropdown .dropdown-menu.show,
+            .dropdown-menu.show,
+            #servicesToggle+.dropdown-menu.show {
+                display: block !important;
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                margin-top: 8px !important; } .dropdown-menu.mega::before { content: ''; position: absolute; top: -20px; left: 0; right: 0; height: 20px; background: transparent;
+                box-shadow: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 1px solid #eee;
+                border-radius: 12px;
+            }
+
+            .dropdown-menu.mega {
+                max-width: 100%;
+                margin-top: 0 !important;
+            }
+
+            .mega-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero {
+                min-height: 72vh;
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 6vw, 2.6rem);
+                overflow-wrap: break-word;
+            }
+
+            .cta-fresh h2,
+            .cta-content h2 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+
+            .review-row {
+                flex-direction: column;
+            }
+
+            .carousel-control-prev {
+                left: 4px;
+            }
+
+            .carousel-control-next {
+                right: 4px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            p {
+                text-align: left;
+            }
+
+            .top-bar {
+                font-size: 11px;
+            }
+
+            .top-bar .container {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .top-bar .container>div {
+                max-width: 100%;
+            }
+
+            .hero {
+                min-height: 0;
+                padding: 68px 0 58px;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.9rem, 8vw, 2.5rem);
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .hero .btn-hero,
+            .hero .btn-hero-outline {
+                margin: 5px 6px 5px 0;
+                padding: 12px 18px;
+            }
+
+            .stats-section {
+                padding: 28px 0;
+            }
+
+            .stat-item {
+                padding: 10px 4px;
+            }
+
+            .stat-item h3 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+
+            .stat-item p {
+                font-size: 11px;
+                overflow-wrap: anywhere;
+            }
+
+            .about-section,
+            .why-section,
+            .services-fresh,
+            .services-new,
+            .faq-section,
+            .blog-section,
+            .testimonials-premium,
+            .portfolio-section,
+            .process-section,
+            .quality-unique,
+            .contact-modern,
+            .form-fresh {
+                padding: 56px 0;
+            }
+
+            .about-section h2 {
+                font-size: clamp(1.75rem, 7vw, 2.1rem);
+            }
+
+            .cta-fresh {
+                padding: 42px 0;
+            }
+
+            .cta-fresh h2,
+            .cta-content h2 {
+                font-size: clamp(1.7rem, 7vw, 2.2rem);
+            }
+
+            .cta-fresh .cta-btn,
+            .cta-fresh .cta-btn-outline {
+                margin: 6px 4px;
+                padding: 12px 18px;
+            }
+
+            .service-new-card {
+                height: 300px;
+            }
+
+            .service-new-overlay {
+                padding: 20px;
+            }
+
+            .service-new-card p,
+            .service-new-card .view-link,
+            .showcase-info p,
+            .showcase-card .view-link {
+                opacity: 1;
+                transform: none;
+            }
+
+            .showcase-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 14px;
+            }
+
+            .showcase-card,
+            .showcase-card.featured {
+                height: 260px;
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .review-slide {
+                padding: 34px 22px 24px;
+            }
+
+            .review-slide p {
+                font-size: 15px;
+            }
+
+            .review-premium {
+                padding: 28px 22px 22px;
+            }
+
+            .form-left,
+            .form-right {
+                padding: 28px 22px;
+            }
+
+            .contact-card {
+                padding: 28px 20px;
+            }
+
+            .quality-point {
+                padding: 18px 14px;
+            }
+
+            .quality-point:hover {
+                transform: none;
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 38px;
+                height: 38px;
+            }
+
+            .whatsapp-float {
+                right: max(16px, env(safe-area-inset-right));
+                bottom: max(16px, env(safe-area-inset-bottom));
+                width: 58px;
+                min-width: 58px;
+                height: 58px;
+                padding: 0;
+                border-radius: 50%;
+                font-size: 30px;
+            }
+
+            .whatsapp-float::after {
+                display: none;
+            }
+
+            .scroll-top {
+                right: 20px;
+                bottom: 88px;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .navbar-brand img {
+                height: 43px;
+                max-width: 175px;
+            }
+
+            .navbar {
+                padding: 9px 0;
+            }
+
+            .container {
+                --bs-gutter-x: 1.25rem;
+            }
+
+            .mega-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero .btn-hero,
+            .hero .btn-hero-outline {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .showcase-card,
+            .showcase-card.featured {
+                height: 230px;
+            }
+        }
+
+        /* Final mobile refinements: feature list, section headings and footer columns */
+        .about-feature-grid>div {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            min-width: 0;
+            line-height: 1.55;
+        }
+
+        .about-feature-grid .feature-check {
+            flex: 0 0 auto;
+            margin: 4px 0 0;
+        }
+
+        .about-feature-grid span {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 767.98px) {
+
+            /* Bring oversized section titles into a consistent mobile scale. */
+            .why-section h2,
+            .services-fresh h2,
+            .services-new h2,
+            .testimonials-carousel-section h2,
+            .testimonials-premium h2,
+            .portfolio-section h2,
+            .project-showcase h2,
+            .process-section h2,
+            .quality-unique h2,
+            .faq-section h2,
+            .blog-section h2,
+            .contact-modern h2,
+            .form-fresh h2 {
+                font-size: clamp(1.55rem, 6.2vw, 2rem) !important;
+                line-height: 1.25;
+                overflow-wrap: break-word;
+            }
+
+            .about-feature-grid {
+                row-gap: 8px;
+            }
+
+            .about-feature-grid>div {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            .footer-fresh {
+                padding: 46px 0 22px;
+            }
+
+            .footer-fresh .footer-nav-column {
+                width: 100%;
+            }
+
+            .footer-fresh h5 {
+                margin-bottom: 14px;
+            }
+
+            .footer-bottom {
+                gap: 12px;
+            }
+
+            .footer-bottom>* {
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .about-feature-grid>div {
+                font-size: 14px;
+            }
+
+            .about-section h2 {
+                font-size: clamp(1.55rem, 7vw, 1.85rem);
+            }
+
+            .footer-fresh {
+                padding-top: 38px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-float {
+                animation: none !important;
+                transition: none;
+            }
+        }
+
+        /* Extra Live Animations */
+        .live-float {
+            animation: liveFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes liveFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .live-pulse {
+            animation: livePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.75;
+            }
+        }
+
+        /* Improved Mobile Typography & Spacing */
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 42px !important;
+            }
+
+            .about-section h2,
+            .why-section h2,
+            .services-fresh h2,
+            .cta-fresh h2,
+            .project-showcase h2,
+            .quality-unique h2,
+            .process-section h2,
+            .portfolio-section h2,
+            .blog-section h2,
+            .faq-section h2 {
+                font-size: 32px !important;
+            }
+
+            section {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .cta-fresh {
+                padding: 60px 0 !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px !important;
+                line-height: 1.2 !important;
+            }
+
+            .about-section h2,
+            .why-section h2,
+            .services-fresh h2,
+            .cta-fresh h2,
+            .project-showcase h2,
+            .quality-unique h2,
+            .process-section h2,
+            .portfolio-section h2,
+            .blog-section h2,
+            .faq-section h2 {
+                font-size: 26px !important;
+                line-height: 1.25 !important;
+            }
+
+            .hero p,
+            .about-section p,
+            section p {
+                font-size: 15px !important;
+            }
+
+            .stat-item h3 {
+                font-size: 28px !important;
+            }
+
+            .btn-hero,
+            .btn-consult,
+            .cta-btn {
+                padding: 12px 22px !important;
+                font-size: 14px !important;
+            }
+
+            .service-fresh-card img {
+                height: 160px !important;
+            }
+
+            .portfolio-card {
+                height: 220px !important;
+            }
+
+            .form-left,
+            .form-right {
+                padding: 30px 20px !important;
+            }
+        }
+
+        /* Studio Mirak Collaboration Section */
+        .collab-mirak-section {
+            padding: 85px 0;
+            background: linear-gradient(180deg, #fbfbfd 0%, #f1f4f8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collab-mirak-section::before {
+            content: '';
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 260px;
+            height: 260px;
+            border: 2px dashed rgba(245, 184, 0, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: spin 30s linear infinite;
+        }
+
+        .collab-mirak-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .collab-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 22, 40, 0.06);
+            color: var(--primary-navy);
+            border: 1px solid rgba(10, 22, 40, 0.12);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .collab-badge-pill i {
+            color: var(--accent-yellow);
+        }
+
+        .collab-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            color: var(--primary-navy);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .collab-title .collab-amp {
+            color: var(--accent-yellow);
+            font-weight: 400;
+            margin: 0 4px;
+        }
+
+        .collab-title .collab-brand {
+            background: linear-gradient(135deg, #0a1628 0%, #d49000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .collab-subtitle {
+            font-size: clamp(16px, 2.2vw, 20px);
+            font-weight: 600;
+            color: #d49000;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        .collab-desc {
+            font-size: 15.5px;
+            line-height: 1.75;
+            color: #4b5563;
+            text-align: justify;
+            margin-bottom: 24px;
+        }
+
+        .collab-points {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collab-point-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: #ffffff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(10, 22, 40, 0.06);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .collab-point-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 8px 24px rgba(245, 184, 0, 0.12);
+            border-color: rgba(245, 184, 0, 0.3);
+        }
+
+        .collab-point-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: linear-gradient(135deg, var(--primary-navy), #1a2a44);
+            color: var(--accent-yellow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .collab-point-item h6 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .collab-point-item p {
+            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: #64748b;
+            text-align: left;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-navy);
+            color: var(--primary-navy);
+            background: transparent;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 9px 22px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-navy);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .collab-visual-card {
+            position: relative;
+            padding: 18px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 18px 45px rgba(10, 22, 40, 0.08);
+            border: 1px solid rgba(10, 22, 40, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .collab-visual-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 50px rgba(10, 22, 40, 0.12);
+        }
+
+        .collab-img-main {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .collab-img-main img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            border-radius: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .collab-mirak-section {
+                padding: 55px 0;
+            }
+
+            .collab-visual-card {
+                padding: 12px;
+                max-width: 100%;
+                border-radius: 20px;
+            }
+
+            .collab-img-main img {
+                height: auto;
+                max-width: 100%;
+                aspect-ratio: 1 / 1;
+                border-radius: 14px;
+            }
+
+            .collab-cta-row {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .collab-cta-row .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <span><i class="far fa-clock"></i> Mon-Sat: 8:30 AM - 7:30 PM</span>
+                <span class="mx-3">|</span>
+                <a href="tel:+919941769381"><i class="fas fa-phone"></i> +91 99417 69381</a>
+                <span class="mx-3">|</span>
+                <a href="mailto:balajimani.2505@gmail.com"><i class="fas fa-envelope"></i> balajimani.2505@gmail.com</a>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <img src="image/dreambrixs.png" alt="DreamBrixs Residential Builders">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="servicesToggle" role="button"
+                            aria-expanded="false">Services</a>
+                        <div class="dropdown-menu mega">
+                            <div class="mega-grid">
+                                <div class="mega-item"><i class="fas fa-home"></i><a
+                                        href="individual-house-construction.html">Individual House Construction</a>
+                                </div>
+                                <div class="mega-item"><i class="fas fa-building"></i><a
+                                        href="villa-construction.html">Villa Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-city"></i><a
+                                        href="apartment-construction.html">Apartment Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-briefcase"></i><a
+                                        href="commercial-building-construction.html">Commercial Building
+                                        Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a
+                                        href="residential-project-development.html">Residential Project Development</a>
+                                </div>
+                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a
+                                        href="architectural-structural-design.html">Architectural & Structural
+                                        Design</a></div>
+                                <div class="mega-item"><i class="fas fa-couch"></i><a
+                                        href="turnkey-interior-solutions.html">Turnkey Interior Solutions</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="projects.php">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <div data-aos="fade-up">
+                <div class="hero-badge"><i class="fas fa-hammer me-2" style="color:var(--accent-yellow);"></i> TURNING RESIDENTIAL VISIONS INTO LANDMARKS</div>
+                <h1>BUILDING DREAMS.<br><span>CREATING LASTING VALUE.</span></h1>
+                <p>Thoughtfully planned homes and construction solutions designed around your vision, lifestyle, and
+                    future in Chennai. Built with uncompromised engineering and lifelong permanence.</p>
+                <a href="contact.html" class="btn btn-hero">DISCUSS YOUR PROJECT <i class="fas fa-arrow-right"></i></a>
+                <a href="projects.php" class="btn btn-hero-outline">EXPLORE OUR PROJECTS</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 col-md-2 stat-item" data-aos="fade-up">
+                    <h3>100+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="col-6 col-md-2 stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="col-6 col-md-2 stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>25+</h3>
+                    <p>Years Engineering</p>
+                </div>
+                <div class="col-6 col-md-2 stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>4.9 <i class="fas fa-star" style="color:var(--accent-yellow);font-size:24px;"></i></h3>
+                    <p>Verified Rating</p>
+                </div>
+                <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0" data-aos="fade-up">
+                    <a href="https://wa.me/919941769381" class="btn whatsapp-btn"><i class="fab fa-whatsapp"></i> QUICK
+                        WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section">
+        <div class="rotating-dots top-left">
+            <div class="dot-circle"></div>
+            <div class="dot-circle"></div>
+            <div class="dot-rect"></div>
+            <div class="dot-circle"></div>
+        </div>
+        <div class="rotating-dots bottom-right">
+            <div class="dot-circle"></div>
+            <div class="dot-rect"></div>
+            <div class="dot-circle"></div>
+            <div class="dot-rect"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p class="text-uppercase text-muted small mb-2">WELCOME TO DREAMBRIXS</p>
+                    <h2>Every Great Home<br>Begins <span>With a Vision.</span></h2>
+
+                    <p style="text-align:justify;">Founded on a commitment to uncompromising quality and architectural
+                        innovation, DreamBrixs Residential Builders has been crafting bespoke homes and residential
+                        landmarks across Chennai for over 25 years.</p>
+
+                    <p style="text-align:justify;">Our residential construction focus spans bespoke individual houses,
+                        modern beachfront luxury villas along ECR, and boutique low-rise communities in prime Chennai
+                        neighbourhoods including Anna Nagar, Boat Club, Kotturpuram, and Besant Nagar.</p>
+                    <div class="row mt-4 about-feature-grid">
+                        <div class="col-12 col-sm-6 mb-2"><i class="fas fa-check-circle feature-check"></i><span>Single
+                                Window Delivery</span></div>
+                        <div class="col-12 col-sm-6 mb-2"><i class="fas fa-check-circle feature-check"></i><span>100%
+                                Vastu Compliance</span></div>
+                        <div class="col-12 col-sm-6 mb-2"><i
+                                class="fas fa-check-circle feature-check"></i><span>Zero-Cost Overruns</span></div>
+                        <div class="col-12 col-sm-6 mb-2"><i class="fas fa-check-circle feature-check"></i><span>10-Year
+                                Structural Warranty</span></div>
+                    </div>
+                    <a href="about.html" class="btn btn-consult mt-4">KNOW MORE <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="about-img-wrap">
+                        <img src="image/home-about.png" alt="DreamBrixs Engineers" class="img-fluid rounded-4 shadow">
+                        <div class="about-badge"><i class="fas fa-award" style="color:var(--accent-yellow);"></i> 25+
+                            Years of Excellence<br><small>Master Residential Architects</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose -->
+    <section class="why-section">
+        <div class="why-dots d1"></div>
+        <div class="why-dots d2"></div>
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600; text-align:center;">OUR CORE
+                    VALUES</p>
+                <h2 class="fw-bold" style="font-size:42px;">Why Choose DreamBrixs?</h2>
+                <p class="text-muted mt-2" style="text-align:center;">"Better Building Experience Starts Here."</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up">
+                    <div class="why-card">
+                        <div class="why-icon-wrap"><i class="fas fa-lightbulb"></i></div>
+                        <h5>Thoughtful Planning</h5>
+                        <p>Comprehensive site feasibility, soil analysis, 3D spatial daylight modeling, and meticulous
+                            Vastu compliance before laying a single brick.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card">
+                        <div class="why-icon-wrap"><i class="fas fa-cogs"></i></div>
+                        <h5>Quality-Focused Execution</h5>
+                        <p>Strict structural engineering using Tata/JSW 550D TMT, certified Ready-Mix concrete, and
+                            multi-stage NABL cube tests built for Chennai's coastal environment.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card">
+                        <div class="why-icon-wrap"><i class="fas fa-comments"></i></div>
+                        <h5>Transparent Communication</h5>
+                        <p>Milestone-based progress reporting, weekly video site walkthroughs, zero surprise cost
+                            escalations, and 100% fiscal openness.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-card">
+                        <div class="why-icon-wrap"><i class="fas fa-heart"></i></div>
+                        <h5>Client-Centred Solutions</h5>
+                        <p>Bespoke architectural detailing tailored precisely to your family's daily habits, lifestyle
+                            requirements, and generational growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Mirak Architectural Collaboration -->
+    <section class="collab-mirak-section" id="architectural-collaboration">
+        <div class="container">
+            <div class="collab-mirak-wrapper">
+                <div class="row align-items-center g-4 g-lg-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="collab-badge-pill">
+                            <i class="fas fa-handshake"></i> ARCHITECTURAL PARTNERSHIP
+                        </div>
+                        <h2 class="collab-title">
+                            DreamBrixs <span class="collab-amp">&times;</span> <span class="collab-brand">Studio
+                                Mirak</span>
+                        </h2>
+                        <h4 class="collab-subtitle">
+                            Our Dedicated Architectural Team &amp; Design Collaborator
+                        </h4>
+                        <p class="collab-desc">
+                            Great structures emerge when visionary architecture unites with master civil engineering. DreamBrixs proudly collaborates with <strong>Studio Mirak</strong> &mdash; our premier architectural design partner.
+                        </p>
+
+                        <div class="collab-points">
+                            <div class="collab-point-item">
+                                <div class="collab-point-icon"><i class="fas fa-drafting-compass"></i></div>
+
+                                <div>
+                                    <h6>Bespoke Architectural Concepts</h6>
+                                    <p>Contemporary elevations, climatic orientation, and personalized floor plans
+                                        crafted by Studio Mirak's lead architects.</p>
+                                </div>
+                            </div>
+                            <div class="collab-point-item">
+                                <div class="collab-point-icon"><i class="fas fa-cube"></i></div>
+
+                                <div>
+                                    <h6>Photorealistic 3D &amp; Spatial Modeling</h6>
+                                    <p>Interactive 3D exterior &amp; interior walk-throughs that let you experience
+                                        every room, daylight angle, and luxury finish before construction.</p>
+                                </div>
+                            </div>
+                            <div class="collab-point-item">
+                                <div class="collab-point-icon"><i class="fas fa-pencil-ruler"></i></div>
+
+                                <div>
+                                    <h6>Unified Design-to-Build Execution</h6>
+                                    <p>Zero design friction &mdash; Studio Mirak's architects work hand-in-hand with
+                                        DreamBrixs site engineers for flawless on-ground delivery.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="collab-cta-row mt-4 pt-2">
+                            <a href="architectural-structural-design.html" class="btn btn-consult me-3">
+                                Explore Architectural Services <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-custom">
+                                Consult Architectural Team
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="collab-visual-card">
+                            <div class="collab-img-main">
+                                <img src="image/collaboration-dreambrixs-studio-mirak.jpg"
+                                    alt="Collaboration: DreamBrixs x Studio Mirak"
+                                    class="img-fluid rounded-4 shadow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fresh CTA -->
+    <section class="cta-fresh">
+        <div class="container text-center">
+            <div data-aos="fade-up">
+                <h2>Ready to transform <span class="highlight">your vision?</span></h2>
+                <p class="mt-3 mb-4" style="font-size:18px; opacity:0.9; text-align:center;">LET'S BUILD SOMETHING
+                    EXCEPTIONAL TOGETHER IN CHENNAI</p>
+                <a href="contact.html" class="cta-btn">GET IN TOUCH <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/919941769381" class="cta-btn-outline"><i class="fab fa-whatsapp"></i> CHAT ON
+                    WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fresh Services -->
+    <section class="services-fresh">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600; text-align:center;">OUR
+                    SERVICES</p>
+                <h2 class="fw-bold" style="font-size:42px;">Construction Solutions for<br>Every Vision.</h2>
+                <p class="text-muted mt-2">End-to-end turnkey residential civil engineering, architectural design, and
+                    project management designed for Chennai's premier urban enclaves.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up">
+                    <div class="service-fresh-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600"
+                            alt="Individual House">
+                        <div class="service-fresh-body">
+                            <h5>Individual House Construction</h5>
+                            <p>Custom single-family residences and multi-tier homes with end-to-end civil execution.</p>
+                            <a href="individual-house-construction.html">VIEW DETAILS <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-fresh-card">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600" alt="Villa">
+                        <div class="service-fresh-body">
+                            <h5>Villa Construction</h5>
+                            <p>Contemporary tropical luxury villas along ECR & OMR engineered for coastal humidity.</p>
+                            <a href="villa-construction.html">VIEW DETAILS <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-fresh-card">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600" alt="Apartment">
+                        <div class="service-fresh-body">
+                            <h5>Apartment Construction</h5>
+                            <p>Boutique low-rise apartments maximising privacy and acoustic comfort.</p>
+                            <a href="apartment-construction.html">VIEW DETAILS <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-fresh-card">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600" alt="Project">
+                        <div class="service-fresh-body">
+                            <h5>Residential Project Development</h5>
+                            <p>Strategic joint ventures with institutional transparency and swift execution.</p>
+                            <a href="residential-project-development.html">VIEW DETAILS <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Carousel -->
+    <section class="testimonials-carousel-section" style="padding: 85px 0;">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase small mb-2"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600; text-align:center;">CLIENT STORIES</p>
+                <h2 class="fw-bold" style="font-size:clamp(28px, 4vw, 38px); line-height:1.25; margin-bottom:8px; padding-top:4px;">What Our Clients Say</h2>
+                <p class="text-muted mt-2" style="font-size:15px; text-align:center; max-width:600px; margin:0 auto;">Real experiences from Chennai homeowners who trusted DreamBrixs</p>
+            </div>
+
+            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="review-row">
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;DreamBrixs delivered our dream home in Anna Nagar with zero cost overruns and perfect Vastu compliance. Highly professional team!&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">RK</div>
+                                    <div class="client-info">
+                                        <strong>Rajesh Kumar</strong>
+                                        <small class="text-muted">Anna Nagar &bull; 5 BHK</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;The quality of construction and transparent communication made our villa project on ECR a smooth journey. Highly recommend.&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">PA</div>
+                                    <div class="client-info">
+                                        <strong>Priya &amp; Arun</strong>
+                                        <small class="text-muted">ECR &bull; Luxury Villa</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;From design to handover, everything was seamless. The 10-year warranty gives us complete peace of mind.&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">SM</div>
+                                    <div class="client-info">
+                                        <strong>Suresh Menon</strong>
+                                        <small class="text-muted">Boat Club &bull; Turnkey</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="review-row">
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;Best residential builders in Chennai. They understood our family needs perfectly and executed with excellence.&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">LI</div>
+                                    <div class="client-info">
+                                        <strong>Lakshmi Iyer</strong>
+                                        <small class="text-muted">Kotturpuram &bull; Individual House</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;Professional approach, weekly updates, and superior finishing. Completed on schedule with no surprises.&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">VR</div>
+                                    <div class="client-info">
+                                        <strong>Venkat Rao</strong>
+                                        <small class="text-muted">Besant Nagar &bull; 4 BHK</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>&ldquo;DreamBrixs turned our vision into a beautiful home. Engineering integrity is truly unmatched.&rdquo;</p>
+                                <div class="client">
+                                    <div class="avatar">AK</div>
+                                    <div class="client-info">
+                                        <strong>Ananya &amp; Karthik</strong>
+                                        <small class="text-muted">OMR &bull; Coastal Villa</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel"
+                    data-bs-slide="prev" aria-label="Previous Review">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel"
+                    data-bs-slide="next" aria-label="Next Review">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="contact.html" class="btn btn-consult">Want to Leave a Review for Us? <i
+                        class="fas fa-pen ms-1"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- Project Showcase -->
+    <section class="project-showcase py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p class="text-uppercase small mb-2"
+                        style="color:var(--accent-yellow); letter-spacing:1.5px; font-weight:600;">PROJECT SHOWCASE</p>
+                    <h2 class="fw-bold" style="font-size:42px; line-height:1.2;">Find a Space That<br><span
+                            style="color:var(--accent-yellow);">Feels Like Home.</span></h2>
+
+
+                    <p class="text-muted" style="text-align:left;">Every structure is a legacy. Our engineering masters
+                        analyze every detail to create architectural landmarks that reflect strength, innovation, and
+                        timeless design in Chennai.</p>
+                    <blockquote class="fst-italic border-start border-warning border-3 ps-3 mt-4 mb-4">"A building is
+                        not just a structure, it's an investment in progress and a testament to architectural vision."
+                    </blockquote>
+                    <a href="projects.php" class="btn btn-consult">DISCOVER OUR PROJECTS <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 text-lg-end mt-4 mt-lg-0" data-aos="fade-left">
+                    <div class="d-inline-block text-start bg-white p-4 rounded-4 shadow-sm">
+                        <div class="d-flex gap-4">
+                            <div>
+                                <h3 class="fw-bold mb-0" style="color:var(--accent-yellow);">100+</h3><small
+                                    class="text-muted">Projects</small>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-0" style="color:var(--accent-yellow);">25+</h3><small
+                                    class="text-muted">Years</small>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-0" style="color:var(--accent-yellow);">4.9 <i class="fas fa-star" style="color:var(--accent-yellow);font-size:22px;"></i></h3><small
+                                    class="text-muted">Rating</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-grid" data-aos="fade-up">
+                <!-- Featured Large Card -->
+                <div class="showcase-card featured">
+                    <span class="status-badge">ONGOING</span>
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800" alt="Kasturi Nilayam">
+                    <div class="showcase-overlay">
+                        <div class="showcase-info">
+                            <h5>KASTURI NILAYAM</h5>
+                            <p>5 BHK Duplex &bull; Anna Nagar West &bull; Modern multi-generational residence with geometric
+                                terracotta screens</p>
+                            <a href="projects.php" class="view-link">VIEW PROJECT <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smaller Cards -->
+                <div class="showcase-card">
+                    <span class="status-badge">COMPLETED</span>
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600"
+                        alt="Courtyard Pavilion">
+                    <div class="showcase-overlay">
+                        <div class="showcase-info">
+                            <h5>THE COURTYARD PAVILION</h5>
+                            <p>Private Pavilion &bull; Kotturpuram &bull; Urban tropical residence centered around an open
+                                rainwater harvesting court</p>
+                            <a href="projects.php" class="view-link">VIEW PROJECT <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <span class="status-badge">COMPLETED</span>
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600"
+                        alt="Luxury Villa Atrium">
+                    <div class="showcase-overlay">
+                        <div class="showcase-info">
+                            <h5>LUXURY VILLA ATRIUM</h5>
+                            <p>Turnkey Interiors &bull; Boat Club Road &bull; Double-height living atrium featuring Italian marble
+                                and brass joinery</p>
+                            <a href="projects.php" class="view-link">VIEW PROJECT <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <span class="status-badge">HANDOVER</span>
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600"
+                        alt="Coastal Sanctuary Villa">
+                    <div class="showcase-overlay">
+                        <div class="showcase-info">
+                            <h5>COASTAL SANCTUARY VILLA</h5>
+                            <p>Bespoke Villa &bull; ECR Beach &bull; Minimalist blackened steel railings and warm teak timber
+                                soffit overhangs</p>
+                            <a href="projects.php" class="view-link">VIEW PROJECT <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <span class="status-badge">FEATURED</span>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="Verandah Villa">
+                    <div class="showcase-overlay">
+                        <div class="showcase-info">
+                            <h5>THE VERANDAH VILLA</h5>
+                            <p>Completed &bull; ECR Beach Road &bull; Contemporary tropical villa with pool and open verandah
+                                living</p>
+                            <a href="projects.php" class="view-link">VIEW PROJECT <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Unique -->
+    <section class="quality-unique">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase small mb-2"
+                    style="letter-spacing:2px; color:var(--accent-yellow); text-align:center;">QUALITY CONTROL FRAMEWORK
+                </p>
+                <h2 class="fw-bold" style="font-size:42px;">Engineering Integrity<br><span class="accent">Without
+                        Compromise</span></h2>
+                <p class="mt-3" style="max-width:680px; margin:0 auto; opacity:0.85; text-align:center;">Chennai's
+                    tropical coastal climate demands rigorous structural specifications. We implement multi-barrier
+                    waterproofing, anti-carbonation coatings, and cathodic rebar protection across all sites.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="q-card">
+                        <div class="q-num">01</div>
+                        <h5>CERTIFIED GRADE 550D TMT</h5>
+                        <p>Strict T-bar & 28-day concrete cube compressive tests logged at certified NABL laboratories
+                            before every pour.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="q-card">
+                        <div class="q-num">02</div>
+                        <h5>INDEPENDENT NABL CUBE TESTING</h5>
+                        <p>Third-party verification reports issued before de-shuttering or subsequent slab pours for
+                            complete transparency.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="q-card">
+                        <div class="q-num">03</div>
+                        <h5>10-YEAR WATER INGRESS WARRANTY</h5>
+                        <p>Dual-coat crystalline waterproofing membranes and polymer screeds applied on basements,
+                            bathrooms, and roof terraces.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process -->
+    <section class="process-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600;text-align:center;">OUR WORK
+                    PROCESS</p>
+                <h2 class="fw-bold" style="font-size:42px;">From First Conversation to<br>Final Handover</h2>
+                <p class="text-muted mt-2" style="text-align:center;">A systematic 4-stage process bringing complete
+                    fiscal, architectural, and structural clarity from initial concept to turnkey occupancy.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up">
+                    <div class="process-card">
+                        <div class="process-num">01</div>
+                        <h5>UNDERSTAND</h5>
+                        <p>Comprehensive dialogue on your family's lifestyle vision, site soil investigation, Vastu
+                            requirements, and crystal-clear budget mapping.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-card">
+                        <div class="process-num">02</div>
+                        <h5>PLAN</h5>
+                        <p>Detailed 3D elevation renderings, structural MEP drawings, CMDA/DTCP municipal approvals, and
+                            exact milestone deliverables.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-card">
+                        <div class="process-num">03</div>
+                        <h5>EXECUTE</h5>
+                        <p>Rigorous turnkey civil execution with weekly video site logs, NABL lab test verification
+                            reports, and licensed full-time engineers.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-card">
+                        <div class="process-num">04</div>
+                        <h5>HANDOVER</h5>
+                        <p>Complete punch-list inspection walkthrough, deep sanitization, compliance as-built CAD
+                            drawings, and 10-year warranty certificate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio with Filter -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                <div data-aos="fade-right">
+                    <p class="text-uppercase small mb-1"
+                        style="color:var(--accent-yellow); letter-spacing:1.5px; font-weight:600;">CURATED PORTFOLIO</p>
+                    <h2 class="fw-bold" style="font-size:40px;">Spaces Designed to Inspire.</h2>
+                </div>
+                <a href="projects.php" class="btn btn-consult mt-3 mt-md-0" data-aos="fade-left">VIEW ALL PROJECTS <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="text-center mb-4" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="individual">Individual House</button>
+                <button class="filter-btn" data-filter="villa">Villa</button>
+                <button class="filter-btn" data-filter="apartment">Apartment</button>
+                <button class="filter-btn" data-filter="project">Residential Project</button>
+                <button class="filter-btn" data-filter="design">Architectural Design</button>
+                <button class="filter-btn" data-filter="interior">Turnkey Interiors</button>
+            </div>
+
+            <div class="row g-4" id="portfolioGrid">
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="villa">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600"
+                            alt="Modern Villa">
+                        <div class="portfolio-overlay">
+                            <h6>Modern Luxury Villa</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="interior">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600" alt="Interior">
+                        <div class="portfolio-overlay">
+                            <h6>Turnkey Interiors</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="individual">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600" alt="Courtyard">
+                        <div class="portfolio-overlay">
+                            <h6>Independent House</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="apartment">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600" alt="Apartment">
+                        <div class="portfolio-overlay">
+                            <h6>Boutique Apartment</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="villa">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdbc?w=600" alt="Coastal">
+                        <div class="portfolio-overlay">
+                            <h6>Coastal Villa</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="project">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" alt="Pool Villa">
+                        <div class="portfolio-overlay">
+                            <h6>Residential Project</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Extra items for Show More -->
+                <div class="col-md-6 col-lg-4 portfolio-item extra-item" data-category="design" style="display:none;">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600" alt="Design">
+                        <div class="portfolio-overlay">
+                            <h6>Architectural Design</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item extra-item" data-category="individual"
+                    style="display:none;">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="House 2">
+                        <div class="portfolio-overlay">
+                            <h6>Individual Residence</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 portfolio-item extra-item" data-category="interior" style="display:none;">
+                    <div class="portfolio-card" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600" alt="Interior 2">
+                        <div class="portfolio-overlay">
+                            <h6>Interior Solution</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button id="showMoreBtn" class="btn btn-consult" onclick="showMoreProjects()">SHOW MORE</button>
+                <a href="projects.php" id="seeMoreBtn" class="btn btn-outline-dark ms-2" style="display:none;">SEE MORE
+                    IN GALLERY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Project">
+    </div>
+
+    <!-- Blog -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase small"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600; text-align:center;">ARTICLES
+                    & RESOURCES</p>
+                <h2 class="fw-bold" style="font-size:42px;">Make Informed Decisions<br>Before You Build.</h2>
+                <p class="text-muted mt-2" style="text-align:center;">Clear, practical construction insights written by
+                    our senior structural engineers to guide Chennai homeowners</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600" alt="Building Guide">
+                        <div class="card-body">
+                            <div class="blog-meta">5 MIN READ &bull; MARCH 2024 &bull; HOMEOWNER GUIDE</div>
+                            <h5>Building a House in Chennai: A Beginner's Guide</h5>
+                            <p>From CMDA plan sanctions to soil bearing tests and coastal foundation selection, here's
+                                everything you must know before starting construction.</p>
+                            <a href="blog.php" class="blog-link">READ ARTICLE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600" alt="Cost Guide">
+                        <div class="card-body">
+                            <div class="blog-meta">6 MIN READ &bull; FEBRUARY 2024 &bull; COST BREAKDOWN</div>
+                            <h5>What Determines the Cost of Building a House?</h5>
+                            <p>A nuanced analysis of material grades, structural finishes, MEP installations, and how to
+                                prevent budget escalation in Chennai projects.</p>
+                            <a href="blog.php" class="blog-link">READ ARTICLE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600"
+                            alt="Villa vs House">
+                        <div class="card-body">
+                            <div class="blog-meta">4 MIN READ &bull; JANUARY 2024 &bull; ARCHITECTURE TRENDS</div>
+                            <h5>Villa vs Independent House: Which is Right for You?</h5>
+                            <p>Evaluating privacy, footprint utilization, maintenance, and resale value across suburban
+                                plots in Tamil Nadu.</p>
+                            <a href="blog.php" class="blog-link">READ ARTICLE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <p class="text-uppercase small"
+                    style="color:var(--accent-yellow); letter-spacing:2px; font-weight:600; text-align:center;">
+                    FREQUENTLY ASKED QUESTIONS</p>
+                <h2 class="fw-bold" style="font-size:40px;">Got Questions? We Have Answers</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">What is DreamBrixs' construction process? <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We follow a clear 4-stage process: Understand, Plan, Execute, and Handover, ensuring
+                                complete transparency and quality at every step.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">Do you offer Vastu-compliant designs? <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, 100% Vastu compliance is integrated into our planning for individual houses and
+                                villas across Chennai.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">What warranty do you provide? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>We offer a 10-year structural warranty along with crystalline waterproofing protection on
+                                critical areas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">How do you ensure zero cost overruns? <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Through detailed BOQ, milestone-based billing, and weekly transparent reporting with no
+                                surprise escalations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">Which areas in Chennai do you serve? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>We primarily work in Anna Nagar, Boat Club, Kotturpuram, Besant Nagar, ECR, OMR, and
+                                other prime residential neighbourhoods.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">Do you handle CMDA approvals? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>Yes, we manage complete plan sanctions, structural drawings, and all municipal approvals
+                                as part of our service.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">Can you build coastal villas? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>Absolutely. Our villas along ECR and OMR are engineered specifically for Chennai's
+                                coastal humidity and climate.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question">How long does a typical project take? <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Timelines vary by size, but we provide clear schedules after site assessment and always
+                                aim for on-time handover.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fresh Form -->
+    <section class="form-fresh">
+        <div class="container">
+            <div class="form-box">
+                <div class="row g-0">
+                    <div class="col-lg-5 form-left" data-aos="fade-right">
+                        <h3>Planning to Build Your Dream Home?</h3>
+                        <p>Tell us about your requirements. Let's explore the right next steps for your residential
+                            project in Chennai.</p>
+                        <div class="mt-4">
+                            <p class="mb-2"><i class="fas fa-check-circle me-2" style="color:var(--accent-yellow);"></i>
+                                Zero-cost overruns</p>
+                            <p class="mb-2"><i class="fas fa-check-circle me-2" style="color:var(--accent-yellow);"></i>
+                                10-year structural warranty</p>
+                            <p class="mb-0"><i class="fas fa-check-circle me-2" style="color:var(--accent-yellow);"></i>
+                                End-to-end project management</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 form-right" data-aos="fade-left">
+                        <form class="row g-3" id="homeConsultForm">
+                            <div class="col-md-6"><input type="text" class="form-control" name="name"
+                                    placeholder="Your Name" required></div>
+                            <div class="col-md-6"><input type="email" class="form-control" name="email"
+                                    placeholder="Email Address" required></div>
+                            <div class="col-md-6"><input type="tel" class="form-control" name="phone"
+                                    placeholder="Phone Number" required></div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="project_type">
+                                    <option value="">Project Type</option>
+                                    <option>Individual House</option>
+                                    <option>Villa</option>
+                                    <option>Apartment</option>
+                                    <option>Commercial Building</option>
+                                    <option>Residential Project</option>
+                                    <option>Interior Solutions</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><input type="text" class="form-control" name="location"
+                                    placeholder="Location in Chennai (e.g. Anna Nagar, Boat Club, ECR)"></div>
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="cta-btn">SUBMIT REQUEST <i
+                                        class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fresh Footer -->
+    <footer class="footer-fresh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
+                    <p class="small" style="line-height:1.7;">We build with expertise and innovation, creating
+                        residential spaces that reflect quality, reliability and lasting architectural value across
+                        Chennai, Tamil Nadu.</p>
+                    <div class="footer-social mt-3">
+                        <a href="javascript:void(0)" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="javascript:void(0)" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/919941769381"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-2 mb-4 footer-nav-column">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="home.html">Home</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="projects.php">Projects</a></li>
+                        <li class="mb-2"><a href="blog.php">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-3 mb-4 footer-nav-column">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="individual-house-construction.html">Individual House</a></li>
+                        <li class="mb-2"><a href="villa-construction.html">Villa Construction</a></li>
+                        <li class="mb-2"><a href="apartment-construction.html">Apartment Construction</a></li>
+                        <li class="mb-2"><a href="commercial-building-construction.html">Commercial Building</a></li>
+                        <li class="mb-2"><a href="residential-project-development.html">Project Development</a></li>
+                        <li class="mb-2"><a href="architectural-structural-design.html">Architectural Design</a></li>
+                        <li><a href="turnkey-interior-solutions.html">Turnkey Interiors</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Get in Touch</h5>
+                    <p class="small mb-2"><i class="fas fa-map-marker-alt me-2" style="color:var(--accent-yellow);"></i>
+                        2/10, Devi Parasakthi Nagar, Karambakkam, Porur, Chennai 600116</p>
+                    <p class="small mb-2"><i class="fas fa-phone me-2" style="color:var(--accent-yellow);"></i> +91
+                        99417 69381</p>
+                    <p class="small mb-2"><i class="fas fa-envelope me-2" style="color:var(--accent-yellow);"></i>
+                        balajimani.2505@gmail.com</p>
+                    <p class="small"><i class="far fa-clock me-2" style="color:var(--accent-yellow);"></i> Mon&ndash;Sat: 8:30
+                        AM &ndash; 7:30 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+                <p class="mb-0">&copy; 2026 DreamBrixs Residential Builders. All Rights Reserved. TN/RERA Registered.
+                </p>
+                <div>
+                    <a href="javascript:void(0)"
+                        onclick="alert('Privacy Policy: DreamBrixs respects your privacy. Client contact details collected on this site are used exclusively for direct project consultations and are never shared with third parties.');">Privacy
+                        Policy</a> &nbsp;|&nbsp; <a href="javascript:void(0)"
+                        onclick="alert('Terms of Engagement: All civil, architectural, and development contracts with DreamBrixs follow milestone-based billing, fixed BOQ pricing, and standard TN/RERA compliance protocols.');">Terms
+                        of Engagement</a> &nbsp;|&nbsp; <a href="javascript:void(0)"
+                        onclick="alert('RERA Disclosures: DreamBrixs Residential Builders adheres to Tamil Nadu Real Estate Regulatory Authority (TNRERA) standards and local CMDA/DTCP planning norms.');">RERA
+                        Disclosures</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/919941769381" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Add subtle live float to main section headings
+        document.querySelectorAll('section h2, .hero h1').forEach(el => {
+            el.classList.add('live-float');
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', function () {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    if (a !== answer) a.style.maxHeight = null;
+                });
+                document.querySelectorAll('.faq-question i').forEach(i => {
+                    if (i !== icon) { i.classList.remove('fa-minus'); i.classList.add('fa-plus'); }
+                });
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                }
+            });
+        });
+
+        // Scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Portfolio Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hide');
+                    } else {
+                        item.classList.add('hide');
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('show');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('show');
+        }
+
+        // Show More
+        function showMoreProjects() {
+            document.querySelectorAll('.extra-item').forEach(el => el.style.display = 'block');
+            document.getElementById('showMoreBtn').style.display = 'none';
+            document.getElementById('seeMoreBtn').style.display = 'inline-block';
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('servicesToggle');
+            const menu = document.querySelector('.dropdown-menu.mega');
+            if (!toggle || !menu) return;
+
+                        function isMobile() {
+                return window.innerWidth < 992;
+            }
+
+            function openMenu() {
+                menu.classList.add('show');
+                if (isMobile()) {
+                    menu.style.cssText = 'display:block !important; position:static !important; width:100% !important; float:none !important; transform:none !important; margin-top:8px; box-shadow:none; opacity:1; visibility:visible;';
+                } else {
+                    menu.style.cssText = 'display:block !important;';
+                }
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                menu.classList.remove('show');
+                menu.style.cssText = '';
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            // Click toggles menu on BOTH desktop and mobile
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (menu.classList.contains('show')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Clicking outside closes the dropdown
+            document.addEventListener('click', function (e) {
+                if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close when navbar collapses
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse) {
+                navbarCollapse.addEventListener('hidden.bs.collapse', closeMenu);
+            }
+
+            // Desktop hover with safety delay buffer so it NEVER disappears unexpectedly
+            const dropdown = toggle.closest('.dropdown');
+            if (dropdown) {
+                let hideTimer = null;
+                dropdown.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                        openMenu();
+                    }
+                });
+                dropdown.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+                menu.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                    }
+                });
+                menu.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+            }
+
+            // Make whole mega item clickable on tap/touch
+            document.querySelectorAll('.mega-item').forEach(function (card) {
+                card.addEventListener('click', function (e) {
+                    const link = card.querySelector('a');
+                    if (link && e.target !== link) {
+                        window.location.href = link.href;
+                    }
+                });
+            });
+
+            const homeForm = document.getElementById('homeConsultForm');
+            if (homeForm) {
+                [homeForm].forEach(function () {
+                    homeForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const fd = new FormData(this);
+                        const name = fd.get('name') || '';
+                        const phone = fd.get('phone') || '';
+                        const email = fd.get('email') || '';
+                        const type = fd.get('project_type') || 'Residential';
+                        const loc = fd.get('location') || 'Chennai';
+                        const msg = 'Hello DreamBrixs, I would like to consult regarding a construction project:%0A- Name: ' + encodeURIComponent(name) + '%0A- Phone: ' + encodeURIComponent(phone) + '%0A- Email: ' + encodeURIComponent(email) + '%0A- Project: ' + encodeURIComponent(type) + '%0A- Location: ' + encodeURIComponent(loc);
+                        alert('Thank you, ' + name + '! Your consultation request has been received. Our engineering team in Chennai will contact you shortly.');
+                        window.open('https://wa.me/919941769381?text=' + msg, '_blank');
+                        this.reset();
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

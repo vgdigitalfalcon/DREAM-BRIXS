@@ -1,0 +1,2 @@
+<?php
+require_once __DIR__.'/../../includes/bootstrap.php';require_login();if($_SERVER['REQUEST_METHOD']!=='POST'){http_response_code(405);exit('Method not allowed');}verify_csrf();$id=(int)($_POST['id']??0);if($id>0){$q=db()->prepare("UPDATE projects SET status='archived',updated_by=? WHERE id=?");$u=current_user();$q->execute([$u['id'],$id]);log_activity($id,'project_archived','Project moved to archive');flash('success','Project archived. It is no longer visible on the public website.');}redirect('admin/projects/index.php');

@@ -1,0 +1,399 @@
+/* Projects Admin – Clean CRM Theme */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #dbeafe;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+}
+
+/* Page container feel */
+form, table, .notice, p, ul, details {
+  max-width: 1200px;
+}
+
+/* Notices */
+.notice {
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+.notice.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+/* Forms as CRM cards */
+form {
+  background: transparent;
+}
+
+fieldset {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.4rem 1.4rem;
+  margin: 0 0 1.5rem 0;
+}
+
+legend {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+  padding: 0 0.5rem;
+  background: var(--card);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.4rem;
+  accent-color: var(--primary);
+}
+
+small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* Buttons */
+button, input[type="submit"], .btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.15rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+button:hover, input[type="submit"]:hover {
+  background: var(--primary-dark);
+}
+
+button[type="button"], a {
+  color: var(--primary);
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Primary action links */
+p > a:first-child,
+p a[href*="add.php"] {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff !important;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+p > a:first-child:hover,
+p a[href*="add.php"]:hover {
+  background: var(--primary-dark);
+  text-decoration: none;
+}
+
+/* Filter form */
+form[method="get"] {
+  background: var(--card);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+form[method="get"] input,
+form[method="get"] select {
+  width: auto;
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+
+form[method="get"] button {
+  flex: 0 0 auto;
+}
+
+/* Tables – CRM list style */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 1rem 0 2rem;
+}
+
+th, td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: #f8fafc;
+}
+
+/* Status column emphasis */
+td:nth-child(3) {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Actions column */
+td:last-child {
+  white-space: normal;
+  font-size: 0.85rem;
+}
+
+td:last-child a {
+  margin-right: 0.4rem;
+  color: var(--primary);
+}
+
+td:last-child form {
+  display: inline;
+}
+
+td:last-child button {
+  background: transparent;
+  color: var(--danger);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+  border: 1px solid #fecaca;
+}
+td:last-child button:hover {
+  background: #fef2f2;
+}
+
+/* Details / pre for revisions */
+details {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+}
+pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  max-height: 400px;
+}
+
+/* SEO checklist */
+ul {
+  list-style: none;
+  padding: 0;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+ul li {
+  padding: 0.75rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+ul li:last-child {
+  border-bottom: none;
+}
+/* Checklist items keep default card look; text still shows PASS/TODO */
+
+/* Related projects multi-select */
+select[multiple] {
+  min-height: 140px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  form[method="get"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  form[method="get"] input,
+  form[method="get"] select,
+  form[method="get"] button {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th, td {
+    padding: 0.7rem 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  fieldset {
+    padding: 1rem;
+  }
+
+  /* Stack form groups better */
+  p label {
+    margin-bottom: 0.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.5rem;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  td {
+    border: none;
+    position: relative;
+    padding-left: 40%;
+    text-align: right;
+  }
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: left;
+  }
+  /* Fallback labels for known columns if no data-label */
+  td:nth-child(1)::before { content: "Project"; }
+  td:nth-child(2)::before { content: "Category"; }
+  td:nth-child(3)::before { content: "Status"; }
+  td:nth-child(4)::before { content: "Views"; }
+  td:nth-child(5)::before { content: "This month"; }
+  td:nth-child(6)::before { content: "Featured"; }
+  td:nth-child(7)::before { content: "Actions"; }
+
+  td:last-child {
+    text-align: left;
+    padding-left: 0.75rem;
+  }
+  td:last-child::before {
+    display: none;
+  }
+}
+
+/* Featured yes/no nicer */
+td:nth-child(6) {
+  font-weight: 600;
+}

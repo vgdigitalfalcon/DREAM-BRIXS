@@ -1,0 +1,10 @@
+# DreamBrixs Blog - Clean URLs
+# Place this file inside /blog/public/ or configure root rewrite to point here
+
+RewriteEngine On
+
+# If accessed via /blog/, clean post URLs
+RewriteRule ^([a-z0-9-]+)/?$ post.php?slug=$1 [L,QSA]
+
+# Listing is blog.php by default
+DirectoryIndex blog.php

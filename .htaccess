@@ -1,0 +1,45 @@
+RewriteEngine On
+RewriteBase /
+Options -MultiViews
+
+# ============================================================
+# PROJECTS
+# ============================================================
+RewriteRule ^projects/?$ projects.php [L,QSA]
+RewriteRule ^projects/([a-zA-Z0-9-]+)/?$ project-detail.php?slug=$1 [L,QSA]
+
+
+# ============================================================
+# BLOG
+# ============================================================
+# Clean URL: dreambrixs.com/blog
+RewriteRule ^blog/?$ /blog/public/blog.php [L,QSA]
+
+# Clean URL: dreambrixs.com/blog/your-post-slug
+RewriteRule ^blog/([a-z0-9-]+)/?$ /blog/public/post.php?slug=$1 [L,QSA]
+
+
+# ============================================================
+# REMOVE .html AND .php EXTENSIONS
+# ============================================================
+# Redirect /page.html → /page
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Redirect /page.php → /page
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Serve extensionless requests
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
+# Serve blog sitemap at domain root
+RewriteRule ^sitemap-blog\.xml$ /blog/public/sitemap-blog.xml [L]

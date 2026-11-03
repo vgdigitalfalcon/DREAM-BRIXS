@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Disallow: /blog/admin/
+
+# Allow major AI / Generative Search crawlers (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://www.dreambrixs.com/sitemap.xml
+Sitemap: https://www.dreambrixs.com/blog/public/sitemap-blog.xml

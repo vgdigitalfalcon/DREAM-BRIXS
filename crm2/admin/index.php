@@ -1,0 +1,7 @@
+<?php
+require_once __DIR__.'/../includes/bootstrap.php';require_login();
+$counts=db()->query("SELECT COUNT(*) total,SUM(status='published') published,SUM(status='draft') drafts,SUM(is_featured=1) featured FROM projects")->fetch();
+$views=db()->query("SELECT COUNT(*) total, SUM(viewed_at >= DATE_FORMAT(CURDATE(),'%Y-%m-01')) month_views FROM page_views")->fetch();
+$top=db()->query("SELECT p.id,p.title,p.slug,COUNT(v.id) views FROM projects p LEFT JOIN page_views v ON v.project_id=p.id AND v.viewed_at >= DATE_FORMAT(CURDATE(),'%Y-%m-01') GROUP BY p.id ORDER BY views DESC,p.updated_at DESC LIMIT 10")->fetchAll();
+$pageTitle='Dashboard';require __DIR__.'/../includes/admin_header.php';
+?><h2>Project Summary</h2><ul><li>Total projects: <?= (int)$counts['total']?></li><li>Published: <?= (int)$counts['published']?></li><li>Drafts: <?= (int)$counts['drafts']?></li><li>Featured: <?= (int)$counts['featured']?></li></ul><h2>Project Views</h2><ul><li>All-time views: <?= (int)$views['total']?></li><li>This month: <?= (int)$views['month_views']?></li></ul><h2>Most viewed this month</h2><table border="1" cellpadding="6"><tr><th>Project</th><th>Views this month</th><th>Action</th></tr><?php foreach($top as $r):?><tr><td><?=e($r['title'])?></td><td><?= (int)$r['views']?></td><td><a href="<?=base_url('admin/projects/edit.php?id='.$r['id'])?>">Edit</a></td></tr><?php endforeach;?></table><p><a href="<?=base_url('admin/projects/add.php')?>">Add project</a></p><?php require __DIR__.'/../includes/admin_footer.php';

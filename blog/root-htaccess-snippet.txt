@@ -1,0 +1,10 @@
+# Add these rules to your website root .htaccess
+# so that /blog and /blog/post-slug work cleanly
+
+RewriteEngine On
+
+# Blog listing
+RewriteRule ^blog/?$ /blog/public/blog.php [L,QSA]
+
+# Single post clean URL
+RewriteRule ^blog/([a-z0-9-]+)/?$ /blog/public/post.php?slug=$1 [L,QSA]
