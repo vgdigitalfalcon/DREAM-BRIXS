@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Single Blog Post Page - DreamBrixs
  * Fully themed to match DreamBrixs service pages
@@ -38,7 +38,7 @@ if (!empty($pdo)) {
             $related->execute([$post['id'], $post['category_id']]);
             $related_posts = $related->fetchAll();
         }
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         $post = null;
     }
 }
@@ -81,8 +81,8 @@ if (!$post) {
 }
 
 $site_name = get_setting('site_name', SITE_NAME);
-$meta_title = $post['meta_title'] ?: $post['title'] . ' | ' . $site_name;
-$meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tags($post['content']), 155);
+$meta_title = !empty($post['meta_title']) ? $post['meta_title'] : ($post['title'] . ' | ' . $site_name);
+$meta_desc = !empty($post['meta_description']) ? $post['meta_description'] : truncate(!empty($post['excerpt']) ? $post['excerpt'] : strip_tags($post['content']), 155);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,8 +91,8 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= e($meta_title) ?></title>
     <meta name="description" content="<?= e($meta_desc) ?>">
-    <?php if ($post['meta_keywords']): ?><meta name="keywords" content="<?= e($post['meta_keywords']) ?>"><?php endif; ?>
-    <link rel="canonical" href="<?= e($post['canonical_url'] ?: post_url($post['slug'])) ?>">
+    <?php if (!empty($post['meta_keywords'])): ?><meta name="keywords" content="<?= e($post['meta_keywords']) ?>"><?php endif; ?>
+    <link rel="canonical" href="<?= e(!empty($post['canonical_url']) ? $post['canonical_url'] : post_url($post['slug'])) ?>">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -157,7 +157,7 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
         .post-hero {
             min-height: 42vh;
             background: linear-gradient(115deg, rgba(10,22,40,0.88), rgba(10,22,40,0.6)),
-                        url('<?= $post['featured_image'] ? e(upload_url($post['featured_image'])) : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600" ?>') center/cover;
+                        url('<?= !empty($post['featured_image']) ? e(upload_url($post['featured_image'])) : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600" ?>') center/cover;
             display: flex; align-items: flex-end; color: #fff; padding: 100px 0 50px;
         }
         .breadcrumb { background: transparent; }
@@ -223,31 +223,31 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html"><img src="../image/dreambrixs.png" alt="DreamBrixs"></a>
+            <a class="navbar-brand" href="/home.html"><img src="/image/dreambrixs.png" alt="DreamBrixs"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
                         <div class="dropdown-menu mega">
                             <div class="mega-grid">
-                                <div class="mega-item"><i class="fas fa-home"></i><a href="../individual-house-construction.html">Individual House</a></div>
-                                <div class="mega-item"><i class="fas fa-building"></i><a href="../villa-construction.html">Villa Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-city"></i><a href="../apartment-construction.html">Apartment Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="../commercial-building-construction.html">Commercial Building</a></div>
-                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="../residential-project-development.html">Project Development</a></div>
-                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="../architectural-structural-design.html">Architectural Design</a></div>
-                                <div class="mega-item"><i class="fas fa-couch"></i><a href="../turnkey-interior-solutions.html">Turnkey Interiors</a></div>
+                                <div class="mega-item"><i class="fas fa-home"></i><a href="/individual-house-construction.html">Individual House</a></div>
+                                <div class="mega-item"><i class="fas fa-building"></i><a href="/villa-construction.html">Villa Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-city"></i><a href="/apartment-construction.html">Apartment Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="/commercial-building-construction.html">Commercial Building</a></div>
+                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="/residential-project-development.html">Project Development</a></div>
+                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="/architectural-structural-design.html">Architectural Design</a></div>
+                                <div class="mega-item"><i class="fas fa-couch"></i><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></div>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../projects.php">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link active" href="<?= e(blog_list_url()) ?>">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
                 </ul>
-                <a href="../contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
+                <a href="/contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
             </div>
         </div>
     </nav>
@@ -258,7 +258,7 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= e(blog_list_url()) ?>">Blog</a></li>
-                    <?php if ($post['category_name']): ?>
+                    <?php if (!empty($post['category_name'])): ?>
                     <li class="breadcrumb-item"><a href="<?= e(blog_list_url()) ?>?category=<?= e($post['category_slug']) ?>"><?= e($post['category_name']) ?></a></li>
                     <?php endif; ?>
                     <li class="breadcrumb-item active"><?= e($post['title']) ?></li>
@@ -269,7 +269,7 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
                 <i class="far fa-calendar me-1"></i> <?= format_date($post['published_at']) ?>
                 <span class="mx-2">•</span>
                 <i class="far fa-clock me-1"></i> <?= (int)$post['reading_time'] ?> min read
-                <?php if ($post['author_name']): ?>
+                <?php if (!empty($post['author_name'])): ?>
                 <span class="mx-2">•</span> By <?= e($post['author_name']) ?>
                 <?php endif; ?>
             </p>
@@ -287,14 +287,14 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
                         </div>
                     </div>
 
-                    <?php if ($related_posts): ?>
+                    <?php if (!empty($related_posts)): ?>
                     <h4 class="mt-5 mb-3">Related Articles</h4>
                     <div class="row g-3">
                         <?php foreach ($related_posts as $r): ?>
                         <div class="col-md-4">
                             <a href="<?= e(post_url($r['slug'])) ?>" class="text-decoration-none text-dark">
                                 <div class="related-card">
-                                    <?php if ($r['featured_image']): ?>
+                                    <?php if (!empty($r['featured_image'])): ?>
                                     <img src="<?= e(upload_url($r['featured_image'])) ?>" alt="<?= e($r['title']) ?>">
                                     <?php else: ?>
                                     <div style="height:150px;background:#f0f0f0;"></div>
@@ -315,7 +315,7 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
                     <div class="content-card text-center">
                         <h5 class="mb-3">Need Help With Your Project?</h5>
                         <p class="small text-muted mb-3">Get a free consultation for your home or interior project in Chennai.</p>
-                        <a href="../contact.html" class="btn btn-consult w-100 mb-2">Get Free Consultation</a>
+                        <a href="/contact.html" class="btn btn-consult w-100 mb-2">Get Free Consultation</a>
                         <a href="https://wa.me/919941769381" class="btn btn-outline-secondary w-100" target="_blank" style="border-radius:999px;">Chat on WhatsApp</a>
                     </div>
                 </div>
@@ -328,26 +328,26 @@ $meta_desc = $post['meta_description'] ?: truncate($post['excerpt'] ?: strip_tag
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <img src="../image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
+                    <img src="/image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
                     <p class="small" style="line-height:1.7;">We build with expertise and innovation, creating residential spaces that reflect quality, reliability and lasting architectural value across Chennai, Tamil Nadu.</p>
                 </div>
                 <div class="col-lg-2 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../index.html">Home</a></li>
-                        <li class="mb-2"><a href="../about.html">About Us</a></li>
-                        <li class="mb-2"><a href="../projects.php">Projects</a></li>
+                        <li class="mb-2"><a href="/home.html">Home</a></li>
+                        <li class="mb-2"><a href="/about.html">About Us</a></li>
+                        <li class="mb-2"><a href="/projects">Projects</a></li>
                         <li class="mb-2"><a href="<?= e(blog_list_url()) ?>">Blog</a></li>
-                        <li><a href="../contact.html">Contact Us</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <h5>Services</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../individual-house-construction.html">Individual House</a></li>
-                        <li class="mb-2"><a href="../villa-construction.html">Villa Construction</a></li>
-                        <li class="mb-2"><a href="../apartment-construction.html">Apartment Construction</a></li>
-                        <li><a href="../turnkey-interior-solutions.html">Turnkey Interiors</a></li>
+                        <li class="mb-2"><a href="/individual-house-construction.html">Individual House</a></li>
+                        <li class="mb-2"><a href="/villa-construction.html">Villa Construction</a></li>
+                        <li class="mb-2"><a href="/apartment-construction.html">Apartment Construction</a></li>
+                        <li><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">

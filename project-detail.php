@@ -1,34 +1,403 @@
 <?php
-require_once __DIR__ . '/crm/config.php';
-$slug = $_GET['slug'] ?? '';
-if (!$slug) { header('Location: /projects'); exit; }
-$stmt = $pdo->prepare("SELECT p.*, c.name as category_name, c.slug as cat_slug FROM projects p JOIN categories c ON p.category_id = c.id WHERE p.slug = ?");
-$stmt->execute([$slug]);
-$project = $stmt->fetch();
-if (!$project) { header('Location: /projects'); exit; }
-$images = $pdo->prepare("SELECT * FROM project_images WHERE project_id = ? ORDER BY is_main DESC, sort_order, id");
-$images->execute([$project['id']]);
-$images = $images->fetchAll();
-$features = $pdo->prepare("SELECT feature_text FROM project_features WHERE project_id = ? ORDER BY sort_order");
-$features->execute([$project['id']]);
-$features = $features->fetchAll(PDO::FETCH_COLUMN);
-$extra = json_decode($project['extra_data'] ?? '{}', true);
-$related = $pdo->prepare("SELECT p.*, (SELECT image_path FROM project_images WHERE project_id=p.id LIMIT 1) as img FROM projects p WHERE p.category_id = ? AND p.id != ? LIMIT 3");
-$related->execute([$project['category_id'], $project['id']]);
-$related = $related->fetchAll();
-$mainImage = $images ? '/crm/uploads/projects/' . $images[0]['image_path'] : 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200';
-$imagePaths = array_map(fn($img) => '/crm/uploads/projects/' . $img['image_path'], $images);
-// Helper: remove # and convert *text* to bold
-function formatText($text) {
-    if (!$text) return '';
-    $text = str_replace('#', '', $text);
-    $text = preg_replace('/\*([^*]+)\*/', '<strong>$1</strong>', $text);
-    return nl2br(htmlspecialchars($text, ENT_QUOTES, 'UTF-8'));
+// DreamBrixs - Project Detail Page
+if (file_exists(__DIR__ . '/crm/config.php')) {
+    require_once __DIR__ . '/crm/config.php';
 }
-// Note: htmlspecialchars is applied first in the regex path below for safety
+
+$slug = isset($_GET['slug']) ? trim((string)$_GET['slug']) : '';
+if (!$slug) {
+    header('Location: /projects');
+    exit;
+}
+
+$project = null;
+$images = [];
+$features = [];
+$extra = [];
+$related = [];
+
+// Helper to resolve project image URL safely
+function resolveDetailImageUrl($img) {
+    if (!$img) {
+        return 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200';
+    }
+    if (preg_match('~^(?:https?:)?//~i', $img) || (strlen($img) > 0 && $img[0] === '/')) {
+        return $img;
+    }
+    return '/crm/uploads/projects/' . $img;
+}
+
+// 1. Try fetching from database if $pdo is available
+if (!empty($pdo)) {
+    try {
+        $stmt = $pdo->prepare("SELECT p.*, c.name as category_name, c.slug as cat_slug FROM projects p JOIN categories c ON p.category_id = c.id WHERE p.slug = ?");
+        $stmt->execute([$slug]);
+        $project = $stmt->fetch();
+        if ($project) {
+            $imagesStmt = $pdo->prepare("SELECT * FROM project_images WHERE project_id = ? ORDER BY is_main DESC, sort_order, id");
+            $imagesStmt->execute([$project['id']]);
+            $images = $imagesStmt->fetchAll();
+
+            $featuresStmt = $pdo->prepare("SELECT feature_text FROM project_features WHERE project_id = ? ORDER BY sort_order");
+            $featuresStmt->execute([$project['id']]);
+            $features = $featuresStmt->fetchAll(PDO::FETCH_COLUMN);
+
+            $extra = json_decode($project['extra_data'] ?? '{}', true) ?: [];
+
+            $relatedStmt = $pdo->prepare("SELECT p.*, (SELECT image_path FROM project_images WHERE project_id=p.id LIMIT 1) as img FROM projects p WHERE p.category_id = ? AND p.id != ? LIMIT 3");
+            $relatedStmt->execute([$project['category_id'], $project['id']]);
+            $related = $relatedStmt->fetchAll();
+        }
+    } catch (Throwable $e) {
+        $project = null;
+    }
+}
+
+// 2. Fallback project catalog if DB is empty or project not yet in DB
+$fallbackProjects = [
+    'grand-crest-residence' => [
+        'id' => 1,
+        'title' => 'The Grand Crest Residence',
+        'slug' => 'grand-crest-residence',
+        'category_name' => 'Individual House',
+        'cat_slug' => 'individual-house',
+        'location' => 'Anna Nagar West, Chennai',
+        'year' => '2025',
+        'status' => 'Completed',
+        'built_up_area' => '4,200 sq.ft',
+        'plot_size' => '2,400 sq.ft',
+        'configuration' => '4 BHK Luxury Independent House',
+        'duration' => '14 Months',
+        'materials' => 'Tata Tiscon Steel, Ultratech Super Cement, Teakwood Doors, Kohler Fittings, Italian Marble Flooring',
+        'testimonial' => '"DreamBrixs delivered our dream home right on schedule with top-tier construction quality and full transparency throughout." — Dr. Ramanathan K.',
+        'short_description' => 'A contemporary 4 BHK independent residence featuring smart home automation, open-concept living, and landscaped courtyard planning.',
+        'detailed_description' => 'The Grand Crest Residence is a landmark independent home crafted in Anna Nagar West. Designed for multi-generational living, this residence blends Vaastu-compliant architecture with contemporary aesthetics, abundant natural light, and premium engineering standards from foundation to final finishes.',
+        'seo_title' => 'The Grand Crest Residence | Luxury House Construction in Chennai',
+        'seo_description' => 'Explore The Grand Crest Residence, a 4,200 sq.ft premium independent home built by DreamBrixs in Anna Nagar West, Chennai.',
+        'features' => [
+            'Vaastu-Compliant East-Facing Layout',
+            'Double-Height Living Room with Sky-Light',
+            'Custom Modular Kitchen with German Hardware',
+            'Rooftop Terrace Garden & Solar Provision',
+            'Covered Stilt Parking for 2 Large SUVs',
+            'Premium Concealed Plumbing with Pressure Booster'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800']
+        ],
+        'extra_data' => ['bhk' => '4 BHK', 'floors' => 'G + 2 Floors']
+    ],
+    'emerald-coast-villa' => [
+        'id' => 2,
+        'title' => 'Emerald Coast Villa',
+        'slug' => 'emerald-coast-villa',
+        'category_name' => 'Villa Construction',
+        'cat_slug' => 'villa-construction',
+        'location' => 'ECR Beach Road, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '5,600 sq.ft',
+        'plot_size' => '4,800 sq.ft',
+        'configuration' => '5 BHK Ultra-Luxury Coastal Villa',
+        'duration' => '16 Months',
+        'materials' => 'Marine-grade anti-corrosive concrete, double-glazed soundproof glass, imported teak, VRV air conditioning',
+        'testimonial' => '"Exceptional execution for a coastal property. The engineering integrity against saline air and moisture is commendable." — S. Jayakumar',
+        'short_description' => 'A coastal luxury villa offering panoramic deck views, private plunge pool, and weather-resistant structural engineering.',
+        'detailed_description' => 'Located along Chennai’s scenic ECR, Emerald Coast Villa is engineered specifically to withstand coastal salinity while providing resort-like luxury. High ceilings, large glazing panels, and outdoor entertainment decks create an unparalleled living experience.',
+        'seo_title' => 'Emerald Coast Villa | ECR Luxury Villa Builders Chennai',
+        'seo_description' => 'Discover Emerald Coast Villa, a 5,600 sq.ft bespoke beachside villa built by DreamBrixs along ECR, Chennai.',
+        'features' => [
+            'Private Plunge Pool with Timber Decking',
+            'Marine-Grade Concrete & Specialized Waterproofing',
+            'Full Home Automation with Voice & App Control',
+            'Private Home Theater Room with Acoustic Treatment',
+            'Designer Landscaped Lawns & Gazebo'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800'],
+            ['image_path' => 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800']
+        ],
+        'extra_data' => ['bhk' => '5 BHK', 'floors' => 'G + 1 Floor + Terrace']
+    ],
+    'nexus-prime-corporate-hub' => [
+        'id' => 3,
+        'title' => 'Nexus Prime Corporate Hub',
+        'slug' => 'nexus-prime-corporate-hub',
+        'category_name' => 'Commercial Construction',
+        'cat_slug' => 'commercial-construction',
+        'location' => 'Guindy, Chennai',
+        'year' => '2025',
+        'status' => 'Ongoing',
+        'built_up_area' => '18,500 sq.ft',
+        'plot_size' => '7,200 sq.ft',
+        'configuration' => 'Commercial Office Complex (B+G+4)',
+        'duration' => '20 Months',
+        'materials' => 'Post-tensioned RCC slabs, High-performance Saint-Gobain structural glazing, OTIS High-speed elevators',
+        'testimonial' => '"DreamBrixs is executing our flagship commercial space with strict timelines and zero compromise on safety." — Nexus Group',
+        'short_description' => 'A grade-A commercial office building designed for modern tech companies and corporate headquarters.',
+        'detailed_description' => 'Nexus Prime Corporate Hub features column-free flexible floor plates, energy-efficient facade glazing, integrated fire-safety systems, and dedicated basement parking in the heart of Guindy’s commercial district.',
+        'seo_title' => 'Nexus Prime Corporate Hub | Commercial Builders Chennai',
+        'seo_description' => 'Modern commercial building construction in Guindy, Chennai by DreamBrixs Residential and Commercial Builders.',
+        'features' => [
+            'Column-Free Open Floor Plates',
+            'Energy-Efficient Low-E Glass Facade',
+            '100% Power Backup with Dual Generator Sync',
+            'Integrated Fire Sprinkler & Hydrant Network',
+            'Advanced Multi-Tier Access Control System'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800'],
+            ['image_path' => 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800']
+        ],
+        'extra_data' => ['bhk' => 'Commercial', 'floors' => 'Basement + G + 4 Floors']
+    ],
+    'zenith-retail-business-plaza' => [
+        'id' => 4,
+        'title' => 'Zenith Retail & Business Plaza',
+        'slug' => 'zenith-retail-business-plaza',
+        'category_name' => 'Commercial Construction',
+        'cat_slug' => 'commercial-construction',
+        'location' => 'Anna Nagar, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '12,000 sq.ft',
+        'plot_size' => '5,000 sq.ft',
+        'configuration' => 'Retail Showroom & Office Space',
+        'duration' => '15 Months',
+        'materials' => 'Structural steel frame, Toughened glass storefronts, Granite lobbies, Heavy duty vitrified tiles',
+        'testimonial' => '"Modern architecture that instantly attracted anchor retail tenants before completion." — Plaza Promoters',
+        'short_description' => 'High-visibility retail and commercial destination designed for high footfall in prime Anna Nagar.',
+        'detailed_description' => 'Zenith Retail & Business Plaza was planned for maximum frontage visibility. With expansive clear spans, dedicated service corridors, and premium finishings, it stands as an exemplary commercial build in Chennai.',
+        'seo_title' => 'Zenith Retail Plaza | Commercial Building Anna Nagar',
+        'seo_description' => 'Explore Zenith Retail Plaza in Anna Nagar, Chennai - high quality commercial building by DreamBrixs.',
+        'features' => [
+            'Triple-Height Grand Entrance Atrium',
+            'Ample Customer Parking with Easy Driveways',
+            'Dedicated Signage & Digital Display Facade',
+            'Heavy-Duty Freight & Passenger Elevators'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800']
+        ],
+        'extra_data' => ['bhk' => 'Commercial', 'floors' => 'G + 3 Floors']
+    ],
+    'horizon-commercial-tower' => [
+        'id' => 5,
+        'title' => 'Horizon Commercial Tower',
+        'slug' => 'horizon-commercial-tower',
+        'category_name' => 'Commercial Construction',
+        'cat_slug' => 'commercial-construction',
+        'location' => 'OMR, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '22,000 sq.ft',
+        'plot_size' => '9,000 sq.ft',
+        'configuration' => 'IT & Corporate Complex',
+        'duration' => '18 Months',
+        'materials' => 'Fe 550D TMT, M30 grade concrete, Double glazed facade, Smart BMS system',
+        'testimonial' => '"Delivered on budget with world-class finishes. Our tenants love the space." — Horizon Ventures',
+        'short_description' => 'A landmark tech workspace with modern amenities and sustainable infrastructure on Chennai IT corridor.',
+        'detailed_description' => 'Constructed on the fast-growing Old Mahabalipuram Road, Horizon Tower delivers efficient workspaces designed around wellness, acoustic comfort, and green building guidelines.',
+        'seo_title' => 'Horizon Commercial Tower | OMR Chennai Builders',
+        'seo_description' => 'Horizon Commercial Tower on OMR, Chennai built with structural precision by DreamBrixs Builders.',
+        'features' => [
+            'IGBC Green Building Standards Compliant',
+            'Multi-Level Smart Parking System',
+            'Rooftop Cafeteria & Breakout Zone',
+            'Dual Fiber Redundancy Infrastructure'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800']
+        ],
+        'extra_data' => ['bhk' => 'Commercial', 'floors' => 'Stilt + 5 Floors']
+    ],
+    'sri-krishna-enclave' => [
+        'id' => 6,
+        'title' => 'Sri Krishna Enclave Stilt+4',
+        'slug' => 'sri-krishna-enclave',
+        'category_name' => 'Apartment Construction',
+        'cat_slug' => 'apartment-construction',
+        'location' => 'Velachery, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '9,800 sq.ft',
+        'plot_size' => '4,000 sq.ft',
+        'configuration' => '8 Premium 3 BHK Apartments (Stilt + 4)',
+        'duration' => '15 Months',
+        'materials' => 'Coromandel King Cement, ARS TMT, Johnson tiles, Havells concealed wiring, Jaquar sanitaryware',
+        'testimonial' => '"All 8 families are delighted with the construction quality and acoustic separation between units." — Residents Association',
+        'short_description' => 'An exclusive boutique residential apartment enclave with 8 luxury units and modern amenities in Velachery.',
+        'detailed_description' => 'Sri Krishna Enclave offers spacious, cross-ventilated 3 BHK apartments planned with privacy and comfort in mind. Engineered with seismic-resistant RCC frames and premium rainwater harvesting systems.',
+        'seo_title' => 'Sri Krishna Enclave | Apartment Construction Velachery Chennai',
+        'seo_description' => 'Sri Krishna Enclave, a luxury stilt + 4 boutique apartment community built by DreamBrixs in Velachery, Chennai.',
+        'features' => [
+            'Only 2 Units Per Floor for Maximum Privacy',
+            '6-Passenger Automatic Lift with ARD',
+            'Dedicated Covered Stilt Car Parking',
+            'CCTV Surveillance and Video Door Phones',
+            'Continuous 24/7 Water Supply with Softener'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800']
+        ],
+        'extra_data' => ['bhk' => '3 BHK (8 Units)', 'floors' => 'Stilt + 4 Floors']
+    ],
+    'mayflower-luxury-duplex' => [
+        'id' => 7,
+        'title' => 'Mayflower Luxury Duplex',
+        'slug' => 'mayflower-luxury-duplex',
+        'category_name' => 'Individual House',
+        'cat_slug' => 'individual-house',
+        'location' => 'Kotturpuram, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '3,800 sq.ft',
+        'plot_size' => '2,200 sq.ft',
+        'configuration' => '4 BHK Contemporary Duplex',
+        'duration' => '13 Months',
+        'materials' => 'RCC Framed structure, engineered stone cladding, Burma teakwood woodwork, Schneider automation',
+        'testimonial' => '"The attention to detail and space optimization in a central Chennai plot was outstanding." — Mr. & Mrs. Murali',
+        'short_description' => 'A sophisticated urban duplex designed with double-height central voids and seamless internal flow.',
+        'detailed_description' => 'Mayflower Duplex exemplifies modern city living in Kotturpuram. Built on an urban plot, vertical volume was maximized with an internal courtyard and skylight that floods the entire home with daylight.',
+        'seo_title' => 'Mayflower Luxury Duplex | Builders in Kotturpuram Chennai',
+        'seo_description' => 'Mayflower Luxury Duplex residence built by DreamBrixs in Kotturpuram, Chennai.',
+        'features' => [
+            'Central Sky-lit Indoor Green Courtyard',
+            'Designer Cantilevered Staircase with Glass Railing',
+            'Walk-in Closets and En-Suite Bathrooms in All Bedrooms',
+            'Sound-Insulated Master Suite with Private Balcony'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800']
+        ],
+        'extra_data' => ['bhk' => '4 BHK', 'floors' => 'G + 1 Floor + Terrace']
+    ],
+    'serenity-bay-beach-villa' => [
+        'id' => 8,
+        'title' => 'Serenity Bay Beach Villa',
+        'slug' => 'serenity-bay-beach-villa',
+        'category_name' => 'Villa Construction',
+        'cat_slug' => 'villa-construction',
+        'location' => 'Besant Nagar, Chennai',
+        'year' => '2023',
+        'status' => 'Completed',
+        'built_up_area' => '4,900 sq.ft',
+        'plot_size' => '3,600 sq.ft',
+        'configuration' => '4 BHK Luxury Coastal Villa',
+        'duration' => '14 Months',
+        'materials' => 'Corrosion-resistant steel, water-repellent exterior silicon paint, Italian travertine, double insulated glass',
+        'testimonial' => '"Our beach home is our sanctuary. The breeze, natural cooling, and finishes are sublime." — K. Anand',
+        'short_description' => 'An airy, modern coastal villa capturing sea breezes and natural daylight just steps from the shore.',
+        'detailed_description' => 'Serenity Bay Villa is oriented to harness cross-ventilation from the Bay of Bengal while shielding interiors from direct harsh tropical heat. Features cantilevered pergolas and extensive terrace decks.',
+        'seo_title' => 'Serenity Bay Beach Villa | Besant Nagar Chennai',
+        'seo_description' => 'Serenity Bay Beach Villa built by DreamBrixs in Besant Nagar, Chennai.',
+        'features' => [
+            'Cross-Ventilated Open Concept Living & Dining',
+            'Terrace Jacuzzi Deck with Sea View',
+            'Full Anti-Corrosive Structural Treatment',
+            'Landscaped Tropical Garden with Drip Irrigation'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800']
+        ],
+        'extra_data' => ['bhk' => '4 BHK', 'floors' => 'G + 2 Floors']
+    ],
+    'aura-minimalist-penthouse' => [
+        'id' => 9,
+        'title' => 'Aura Minimalist Penthouse',
+        'slug' => 'aura-minimalist-penthouse',
+        'category_name' => 'Turnkey Interiors',
+        'cat_slug' => 'turnkey-interiors',
+        'location' => 'Boat Club Road, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '3,400 sq.ft',
+        'plot_size' => 'Penthouse Level',
+        'configuration' => '3 BHK Turnkey Luxury Interior',
+        'duration' => '5 Months',
+        'materials' => 'Fluted oak wall paneling, Italian micro-cement, custom brass hardware, smart ambient lighting',
+        'testimonial' => '"Executed with precision and minimalist elegance. Truly world-class interior craftsmanship." — Priya Sundaram',
+        'short_description' => 'A refined turnkey interior project showcasing minimalist aesthetics, warm woods, and concealed storage.',
+        'detailed_description' => 'Aura Penthouse is a complete turnkey transformation. From custom cabinetry and lighting design to acoustics and automated blinds, every element was tailored for serene luxury living on prestigious Boat Club Road.',
+        'seo_title' => 'Aura Minimalist Penthouse | Turnkey Interiors Chennai',
+        'seo_description' => 'Aura Minimalist Penthouse turnkey interior design and execution by DreamBrixs, Chennai.',
+        'features' => [
+            'Custom Fluted Wood & Micro-Cement Wall Features',
+            'Concealed Magnetic Track Architectural Lighting',
+            'Full Smart Home Scene Controller & Motorized Drapes',
+            'Bespoke Italian Kitchen with Quartz Island Counter'
+        ],
+        'images' => [
+            ['image_path' => 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200'],
+            ['image_path' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800']
+        ],
+        'extra_data' => ['bhk' => '3 BHK Penthouse', 'floors' => 'Penthouse Floor']
+    ]
+];
+
+if (!$project && isset($fallbackProjects[$slug])) {
+    $fb = $fallbackProjects[$slug];
+    $project = [
+        'id' => $fb['id'],
+        'title' => $fb['title'],
+        'slug' => $fb['slug'],
+        'category_name' => $fb['category_name'],
+        'cat_slug' => $fb['cat_slug'],
+        'category_id' => $fb['id'],
+        'location' => $fb['location'],
+        'year' => $fb['year'],
+        'status' => $fb['status'],
+        'built_up_area' => $fb['built_up_area'],
+        'plot_size' => $fb['plot_size'],
+        'configuration' => $fb['configuration'],
+        'duration' => $fb['duration'],
+        'materials' => $fb['materials'],
+        'testimonial' => $fb['testimonial'],
+        'short_description' => $fb['short_description'],
+        'detailed_description' => $fb['detailed_description'],
+        'seo_title' => $fb['seo_title'],
+        'seo_description' => $fb['seo_description'],
+        'extra_data' => json_encode($fb['extra_data'])
+    ];
+    $images = $fb['images'];
+    $features = $fb['features'];
+    $extra = $fb['extra_data'];
+
+    // Pick 3 related fallback projects
+    $related = [];
+    foreach ($fallbackProjects as $s => $fbp) {
+        if ($s !== $slug && count($related) < 3) {
+            $related[] = [
+                'title' => $fbp['title'],
+                'slug' => $fbp['slug'],
+                'year' => $fbp['year'],
+                'img' => $fbp['images'][0]['image_path'] ?? ''
+            ];
+        }
+    }
+}
+
+if (!$project) {
+    header('Location: /projects');
+    exit;
+}
+
+$mainImage = !empty($images) ? resolveDetailImageUrl($images[0]['image_path']) : 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200';
+$imagePaths = array_map(fn($img) => resolveDetailImageUrl($img['image_path']), $images);
+
 function formatSafe($text) {
     if (!$text) return '';
-    $text = str_replace('#', '', $text);
+    $text = str_replace('#', '', (string)$text);
     $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     $text = preg_replace('/\*([^*]+)\*/', '<strong>$1</strong>', $text);
     return nl2br($text);
@@ -119,7 +488,7 @@ function formatSafe($text) {
         .detail-hero {
             min-height: 48vh;
             background: linear-gradient(115deg, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.78) 100%),
-                        url('<?= $mainImage ?>') center/cover no-repeat;
+                        url('<?= htmlspecialchars($mainImage) ?>') center/cover no-repeat;
             display: flex; align-items: flex-end; color: #fff; position: relative; overflow: hidden; padding: 110px 0 45px;
         }
         .detail-hero h1 { font-size: 40px; font-weight: 800; line-height: 1.15; }
@@ -294,11 +663,11 @@ function formatSafe($text) {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="/image/dreambrixs.png" alt="DreamBrixs"></a>
+            <a class="navbar-brand" href="/home.html"><img src="/image/dreambrixs.png" alt="DreamBrixs"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
@@ -349,7 +718,7 @@ function formatSafe($text) {
                     <?php if ($images): ?>
                     <div class="gallery-grid" data-aos="fade-up">
                         <div class="gallery-main" onclick="openLightbox(0)">
-                            <img src="/crm/uploads/projects/<?= htmlspecialchars($images[0]['image_path']) ?>" alt="<?= htmlspecialchars($project['title']) ?>">
+                            <img src="<?= htmlspecialchars(resolveDetailImageUrl($images[0]['image_path'])) ?>" alt="<?= htmlspecialchars($project['title']) ?>">
                         </div>
                         <div class="gallery-side">
                             <?php 
@@ -358,7 +727,7 @@ function formatSafe($text) {
                                 $realIndex = $idx + 1;
                             ?>
                             <div class="thumb-wrap" onclick="openLightbox(<?= $realIndex ?>)">
-                                <img src="/crm/uploads/projects/<?= htmlspecialchars($img['image_path']) ?>" alt="View">
+                                <img src="<?= htmlspecialchars(resolveDetailImageUrl($img['image_path'])) ?>" alt="View">
                                 <div class="view-more-overlay">View</div>
                             </div>
                             <?php endforeach; ?>
@@ -386,13 +755,13 @@ function formatSafe($text) {
                         </ul>
                     </div>
                     <?php endif; ?>
-                    <?php if ($project['materials']): ?>
+                    <?php if (!empty($project['materials'])): ?>
                     <div class="content-card" data-aos="fade-up">
                         <h4 class="mb-3">Materials & Specifications</h4>
                         <p class="mb-0" style="line-height:1.75;"><?= formatSafe($project['materials']) ?></p>
                     </div>
                     <?php endif; ?>
-                    <?php if ($project['testimonial']): ?>
+                    <?php if (!empty($project['testimonial'])): ?>
                     <div class="content-card" data-aos="fade-up" style="border-left: 4px solid var(--accent-yellow);">
                         <h5 class="mb-2"><i class="fas fa-quote-left me-2" style="color:var(--accent-yellow);"></i>Client Feedback</h5>
                         <p class="mb-0" style="font-style:italic; line-height:1.7;"><?= formatSafe($project['testimonial']) ?></p>
@@ -407,14 +776,14 @@ function formatSafe($text) {
                             <tr><td>Location</td><td><?= htmlspecialchars($project['location'] ?? '-') ?></td></tr>
                             <tr><td>Year</td><td><?= htmlspecialchars($project['year'] ?? '-') ?></td></tr>
                             <tr><td>Status</td><td><span class="status-badge <?= $project['status']=='Completed' ? 'status-completed' : 'status-ongoing' ?>"><?= htmlspecialchars($project['status']) ?></span></td></tr>
-                            <?php if ($project['built_up_area']): ?><tr><td>Built-up</td><td><?= htmlspecialchars($project['built_up_area']) ?></td></tr><?php endif; ?>
-                            <?php if ($project['plot_size']): ?><tr><td>Plot Size</td><td><?= htmlspecialchars($project['plot_size']) ?></td></tr><?php endif; ?>
-                            <?php if ($project['configuration']): ?><tr><td>Configuration</td><td><?= htmlspecialchars($project['configuration']) ?></td></tr><?php endif; ?>
-                            <?php if ($project['duration']): ?><tr><td>Duration</td><td><?= htmlspecialchars($project['duration']) ?></td></tr><?php endif; ?>
+                            <?php if (!empty($project['built_up_area'])): ?><tr><td>Built-up</td><td><?= htmlspecialchars($project['built_up_area']) ?></td></tr><?php endif; ?>
+                            <?php if (!empty($project['plot_size'])): ?><tr><td>Plot Size</td><td><?= htmlspecialchars($project['plot_size']) ?></td></tr><?php endif; ?>
+                            <?php if (!empty($project['configuration'])): ?><tr><td>Configuration</td><td><?= htmlspecialchars($project['configuration']) ?></td></tr><?php endif; ?>
+                            <?php if (!empty($project['duration'])): ?><tr><td>Duration</td><td><?= htmlspecialchars($project['duration']) ?></td></tr><?php endif; ?>
                             <?php if (!empty($extra['bhk'])): ?><tr><td>BHK</td><td><?= htmlspecialchars($extra['bhk']) ?></td></tr><?php endif; ?>
                             <?php if (!empty($extra['floors'])): ?><tr><td>Floors</td><td><?= htmlspecialchars($extra['floors']) ?></td></tr><?php endif; ?>
                         </table>
-                        <a href="https://wa.me/919941769381?text=Hi, I'm interested in the project: <?= urlencode($project['title']) ?>" 
+                        <a href="https://wa.me/919941769381?text=Hi,%20I%20am%20interested%20in%20the%20project:%20<?= urlencode($project['title']) ?>" 
                            class="btn btn-consult w-100 mt-4" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-whatsapp me-1"></i> Enquire on WhatsApp
                         </a>
@@ -425,8 +794,8 @@ function formatSafe($text) {
                         <h5 class="mb-3">Related Projects</h5>
                         <?php foreach ($related as $r): ?>
                         <a href="/projects/<?= htmlspecialchars($r['slug']) ?>" class="related-card">
-                            <?php if ($r['img']): ?>
-                            <img src="/crm/uploads/projects/<?= htmlspecialchars($r['img']) ?>" alt="<?= htmlspecialchars($r['title']) ?>">
+                            <?php if (!empty($r['img'])): ?>
+                            <img src="<?= htmlspecialchars(resolveDetailImageUrl($r['img'])) ?>" alt="<?= htmlspecialchars($r['title']) ?>">
                             <?php else: ?>
                             <div style="width:70px;height:52px;background:#f0f0f0;border-radius:8px;"></div>
                             <?php endif; ?>
@@ -469,7 +838,7 @@ function formatSafe($text) {
                 <div class="col-12 col-lg-2 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="/">Home</a></li>
+                        <li class="mb-2"><a href="/home.html">Home</a></li>
                         <li class="mb-2"><a href="/about.html">About Us</a></li>
                         <li class="mb-2"><a href="/service.html">Services</a></li>
                         <li class="mb-2"><a href="/projects">Projects</a></li>
@@ -483,6 +852,7 @@ function formatSafe($text) {
                         <li class="mb-2"><a href="/individual-house-construction.html">Individual House</a></li>
                         <li class="mb-2"><a href="/villa-construction.html">Villa Construction</a></li>
                         <li class="mb-2"><a href="/apartment-construction.html">Apartment Construction</a></li>
+                        <li class="mb-2"><a href="/commercial-building-construction.html">Commercial Building</a></li>
                         <li class="mb-2"><a href="/residential-project-development.html">Project Development</a></li>
                         <li class="mb-2"><a href="/architectural-structural-design.html">Architectural Design</a></li>
                         <li><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></li>

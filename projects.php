@@ -1,6 +1,14 @@
-﻿<?php
-// Place this file in your main public_html (or adjust path)
-require_once __DIR__ . '/crm/config.php';
+<?php
+// DreamBrixs - Projects Listing Page
+if (file_exists(__DIR__ . '/crm/config.php')) {
+    require_once __DIR__ . '/crm/config.php';
+}
+
+// Request parameters with safe defaults
+$cat = isset($_GET['category']) ? trim((string)$_GET['category']) : '';
+$status = isset($_GET['status']) ? trim((string)$_GET['status']) : '';
+$page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+$perPage = 9;
 
 $projects = [];
 $categories = [];
@@ -11,12 +19,12 @@ if (!empty($pdo)) {
     try {
         $countSql = "SELECT COUNT(*) FROM projects p JOIN categories c ON p.category_id = c.id WHERE 1=1";
         $countParams = [];
-        if ($cat) { $countSql .= " AND c.slug = ?"; $countParams[] = $cat; }
-        if ($status) { $countSql .= " AND p.status = ?"; $countParams[] = $status; }
+        if ($cat !== '') { $countSql .= " AND c.slug = ?"; $countParams[] = $cat; }
+        if ($status !== '') { $countSql .= " AND p.status = ?"; $countParams[] = $status; }
         $countStmt = $pdo->prepare($countSql);
         $countStmt->execute($countParams);
         $total = (int)$countStmt->fetchColumn();
-        $totalPages = max(1, (int)ceil($total / $perPage));
+        $totalPages = max(1, (int)ceil($total / max(1, $perPage)));
         if ($page > $totalPages) $page = $totalPages;
         $offset = ($page - 1) * $perPage;
 
@@ -25,19 +33,24 @@ if (!empty($pdo)) {
                 (SELECT image_path FROM project_images WHERE project_id = p.id ORDER BY sort_order LIMIT 1) as any_image
                 FROM projects p JOIN categories c ON p.category_id = c.id WHERE 1=1";
         $params = [];
-        if ($cat) { $sql .= " AND c.slug = ?"; $params[] = $cat; }
-        if ($status) { $sql .= " AND p.status = ?"; $params[] = $status; }
-        $sql .= " ORDER BY p.year DESC, p.created_at DESC LIMIT $perPage OFFSET $offset";
+        if ($cat !== '') { $sql .= " AND c.slug = ?"; $params[] = $cat; }
+        if ($status !== '') { $sql .= " AND p.status = ?"; $params[] = $status; }
+        $sql .= " ORDER BY p.year DESC, p.created_at DESC LIMIT " . (int)$perPage . " OFFSET " . (int)$offset;
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
         $projects = $stmt->fetchAll();
-        $categories = $pdo->query("SELECT * FROM categories ORDER BY sort_order")->fetchAll();
-    } catch (Exception $e) {
+
+        $categoriesStmt = $pdo->query("SELECT * FROM categories ORDER BY sort_order");
+        if ($categoriesStmt) {
+            $categories = $categoriesStmt->fetchAll();
+        }
+    } catch (Throwable $e) {
         $projects = [];
+        $categories = [];
     }
 }
 
-if (empty($projects)) {
+if (empty($categories)) {
     $categories = [
         ['name' => 'Individual House', 'slug' => 'individual-house'],
         ['name' => 'Villa Construction', 'slug' => 'villa-construction'],
@@ -46,6 +59,9 @@ if (empty($projects)) {
         ['name' => 'Project Development', 'slug' => 'project-development'],
         ['name' => 'Turnkey Interiors', 'slug' => 'turnkey-interiors']
     ];
+}
+
+if (empty($projects)) {
     $allFallbackProjects = [
         [
             'title' => 'The Grand Crest Residence',
@@ -147,23 +163,44 @@ if (empty($projects)) {
             'any_image' => 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'
         ]
     ];
-    if ($cat) {
+    if ($cat !== '') {
         $allFallbackProjects = array_values(array_filter($allFallbackProjects, function($p) use ($cat) { return $p['cat_slug'] === $cat; }));
     }
-    $projects = $allFallbackProjects;
-    $total = count($projects);
-    $totalPages = 1;
+    if ($status !== '') {
+        $allFallbackProjects = array_values(array_filter($allFallbackProjects, function($p) use ($status) { return strcasecmp($p['status'], $status) === 0; }));
+    }
+    $total = count($allFallbackProjects);
+    $totalPages = max(1, (int)ceil($total / max(1, $perPage)));
+    if ($page > $totalPages) $page = $totalPages;
+    $offset = ($page - 1) * $perPage;
+    $projects = array_slice($allFallbackProjects, $offset, $perPage);
 }
 
 // Helper to build filter URL keeping current filters
 function buildUrl($extra = []) {
     global $cat, $status;
     $params = array_filter([
-        'category' => $cat ?: null,
-        'status' => $status ?: null,
-    ]);
+        'category' => ($cat !== '') ? $cat : null,
+        'status' => ($status !== '') ? $status : null,
+    ], fn($v) => $v !== null && $v !== '');
     $params = array_merge($params, $extra);
-    return 'projects.php?' . http_build_query($params);
+    if (isset($params['page']) && (int)$params['page'] <= 1) {
+        unset($params['page']);
+    }
+    $params = array_filter($params, fn($v) => $v !== null && $v !== '');
+    return '/projects' . ($params ? ('?' . http_build_query($params)) : '');
+}
+
+// Helper to resolve project image URL safely
+function getProjectImageUrl($p) {
+    $img = !empty($p['main_image']) ? $p['main_image'] : (!empty($p['any_image']) ? $p['any_image'] : '');
+    if (!$img) {
+        return 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800';
+    }
+    if (preg_match('~^(?:https?:)?//~i', $img) || (strlen($img) > 0 && $img[0] === '/')) {
+        return htmlspecialchars($img, ENT_QUOTES, 'UTF-8');
+    }
+    return '/crm/uploads/projects/' . htmlspecialchars($img, ENT_QUOTES, 'UTF-8');
 }
 ?>
 <!DOCTYPE html>
@@ -257,7 +294,7 @@ function buildUrl($extra = []) {
         .proj-hero {
             min-height: 62vh;
             background: linear-gradient(115deg, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.62) 50%, rgba(10,22,40,0.78) 100%),
-                        url('image/projects-hero-bg.png') center/cover no-repeat;
+                        url('/image/projects-hero-bg.png') center/cover no-repeat;
             display: flex; align-items: center; color: #fff; position: relative; overflow: hidden; padding: 70px 0 50px;
         }
         .proj-hero::before {
@@ -308,7 +345,7 @@ function buildUrl($extra = []) {
         .page-link.active { background: var(--accent-yellow); color: #101010; border-color: var(--accent-yellow); }
         .page-link.disabled { opacity: 0.45; pointer-events: none; }
 
-                /* Unified 4-Column Balanced Footer */
+        /* Unified 4-Column Balanced Footer */
         .footer-fresh {
             background: #070d18;
             color: #94a3b8;
@@ -350,32 +387,39 @@ function buildUrl($extra = []) {
             margin-bottom: 0;
         }
 
-        .footer-fresh ul li {
-            margin-bottom: 9px;
-            position: static;
-            padding-left: 0;
+        .footer-logo {
+            height: 52px;
+            margin-bottom: 16px;
+            object-fit: contain;
         }
 
-        .footer-fresh ul li::before {
-            content: none !important;
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            color: #fff;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-yellow);
+            color: #070d18;
+            transform: translateY(-2px);
         }
 
         .footer-fresh ul li a {
             color: #94a3b8;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             font-size: 14px;
-            transition: all 0.25s ease;
-        }
-
-        .footer-fresh ul li a::before {
-            content: '\203A';
-            color: var(--accent-yellow);
-            font-size: 16px;
-            line-height: 1;
-            transition: transform 0.25s ease;
+            transition: all 0.25s;
+            display: inline-block;
         }
 
         .footer-fresh ul li a:hover {
@@ -383,52 +427,34 @@ function buildUrl($extra = []) {
             transform: translateX(4px);
         }
 
-        .footer-fresh ul li a:hover::before {
-            transform: translateX(2px);
-        }
-
-        .footer-fresh .footer-contact-item {
+        .footer-contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 13.5px;
-            color: #94a3b8;
-            line-height: 1.5;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
         }
 
-        .footer-fresh .footer-contact-item i {
+        .footer-contact-item i {
             color: var(--accent-yellow);
-            font-size: 15px;
             margin-top: 3px;
+            font-size: 15px;
             flex-shrink: 0;
-            width: 16px;
-            text-align: center;
         }
 
-        .footer-logo {
-            height: 48px;
-            margin-bottom: 16px;
+        .footer-bottom {
+            font-size: 13px;
+            color: #64748b;
         }
 
-        .footer-social a {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 8px;
-            transition: all 0.3s;
-            color: #fff;
+        .footer-bottom a {
+            color: #64748b;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .footer-social a:hover {
-            background: var(--accent-yellow);
-            color: #000;
-            transform: translateY(-3px);
+        .footer-bottom a:hover {
+            color: var(--accent-yellow);
         }
 
         .whatsapp-float {
@@ -483,7 +509,7 @@ function buildUrl($extra = []) {
             .proj-hero {
                 min-height: auto; padding: 70px 0 40px;
                 background-image: linear-gradient(115deg, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.65) 50%, rgba(10,22,40,0.78) 100%),
-                                  url('image/projects-hero-bg-mob.png') center/cover no-repeat !important;
+                                  url('/image/projects-hero-bg-mob.png') center/cover no-repeat !important;
             }
             .proj-hero h1 { font-size: clamp(28px, 8vw, 36px) !important; }
             section.py-5 { padding-top: 48px !important; padding-bottom: 48px !important; }
@@ -520,31 +546,31 @@ function buildUrl($extra = []) {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="image/dreambrixs.png" alt="DreamBrixs"></a>
+            <a class="navbar-brand" href="/home.html"><img src="/image/dreambrixs.png" alt="DreamBrixs"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
                         <div class="dropdown-menu mega">
                             <div class="mega-grid">
-                                <div class="mega-item"><i class="fas fa-home"></i><a href="individual-house-construction.html">Individual House</a></div>
-                                <div class="mega-item"><i class="fas fa-building"></i><a href="villa-construction.html">Villa Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-city"></i><a href="apartment-construction.html">Apartment Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="commercial-building-construction.html">Commercial Building</a></div>
-                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="residential-project-development.html">Project Development</a></div>
-                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="architectural-structural-design.html">Architectural Design</a></div>
-                                <div class="mega-item"><i class="fas fa-couch"></i><a href="turnkey-interior-solutions.html">Turnkey Interiors</a></div>
+                                <div class="mega-item"><i class="fas fa-home"></i><a href="/individual-house-construction.html">Individual House</a></div>
+                                <div class="mega-item"><i class="fas fa-building"></i><a href="/villa-construction.html">Villa Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-city"></i><a href="/apartment-construction.html">Apartment Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="/commercial-building-construction.html">Commercial Building</a></div>
+                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="/residential-project-development.html">Project Development</a></div>
+                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="/architectural-structural-design.html">Architectural Design</a></div>
+                                <div class="mega-item"><i class="fas fa-couch"></i><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></div>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" href="projects.php">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
                 </ul>
-                <a href="contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
+                <a href="/contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
             </div>
         </div>
     </nav>
@@ -562,9 +588,9 @@ function buildUrl($extra = []) {
         <div class="container">
             <div class="text-center mb-4" data-aos="fade-up">
                 <div class="filter-wrap d-inline-flex">
-                    <a href="<?= buildUrl(['page' => 1]) ?>" class="filter-btn <?= !$cat ? 'active' : '' ?>">All</a>
+                    <a href="<?= buildUrl(['category' => '', 'page' => 1]) ?>" class="filter-btn <?= $cat === '' ? 'active' : '' ?>">All</a>
                     <?php foreach ($categories as $c): ?>
-                        <a href="<?= buildUrl(['category' => $c['slug'], 'page' => 1]) ?>" class="filter-btn <?= $cat == $c['slug'] ? 'active' : '' ?>">
+                        <a href="<?= buildUrl(['category' => $c['slug'], 'page' => 1]) ?>" class="filter-btn <?= $cat === $c['slug'] ? 'active' : '' ?>">
                             <?= htmlspecialchars($c['name']) ?>
                         </a>
                     <?php endforeach; ?>
@@ -573,9 +599,8 @@ function buildUrl($extra = []) {
 
             <div class="row g-4" id="projectsContainer">
                 <?php foreach ($projects as $i => $p): 
-                    $img = $p['main_image'] ?: $p['any_image'];
-                    $imgUrl = $img ? 'crm/uploads/projects/' . htmlspecialchars($img) : 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800';
-                    $statusClass = ($p['status'] == 'Completed') ? 'status-completed' : 'status-ongoing';
+                    $imgUrl = getProjectImageUrl($p);
+                    $statusClass = (!empty($p['status']) && $p['status'] === 'Completed') ? 'status-completed' : 'status-ongoing';
                 ?>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 100 ?>">
                     <a href="/projects/<?= htmlspecialchars($p['slug']) ?>" class="text-decoration-none text-dark">
@@ -585,8 +610,8 @@ function buildUrl($extra = []) {
                                 <h6 class="mb-1"><?= htmlspecialchars($p['title']) ?></h6>
                                 <div class="small text-muted mb-2"><?= htmlspecialchars($p['location'] ?? '') ?> • <?= htmlspecialchars($p['year'] ?? '') ?></div>
                                 <div class="project-meta">
-                                    <span><?= htmlspecialchars($p['category_name']) ?></span>
-                                    <span class="status-badge <?= $statusClass ?>"><?= htmlspecialchars($p['status']) ?></span>
+                                    <span><?= htmlspecialchars($p['category_name'] ?? 'Project') ?></span>
+                                    <span class="status-badge <?= $statusClass ?>"><?= htmlspecialchars($p['status'] ?? 'Completed') ?></span>
                                 </div>
                             </div>
                         </div>
@@ -632,7 +657,7 @@ function buildUrl($extra = []) {
         <div class="container text-center" data-aos="fade-up">
             <h2 class="fw-bold mb-3">Ready to Start Your Project?</h2>
             <p class="mb-4" style="opacity:0.9;max-width:580px;margin:0 auto;text-align:center;">Partner with DreamBrixs for turnkey residential solutions across Chennai.</p>
-            <a href="contact.html" class="btn btn-consult me-2">Get a Free Consultation</a>
+            <a href="/contact.html" class="btn btn-consult me-2">Get a Free Consultation</a>
             <a href="https://wa.me/919941769381" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         </div>
     </section>
@@ -642,7 +667,7 @@ function buildUrl($extra = []) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <img src="image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
+                    <img src="/image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
                     <p class="small" style="line-height:1.7;">We build with expertise and innovation, creating residential spaces that reflect quality, reliability and lasting architectural value across Chennai, Tamil Nadu.</p>
                     <div class="footer-social mt-3">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -654,24 +679,24 @@ function buildUrl($extra = []) {
                 <div class="col-12 col-lg-2 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="home.html">Home</a></li>
-                        <li class="mb-2"><a href="about.html">About Us</a></li>
-                        <li class="mb-2"><a href="service.html">Services</a></li>
-                        <li class="mb-2"><a href="projects.php">Projects</a></li>
-                        <li class="mb-2"><a href="blog.php">Blog</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li class="mb-2"><a href="/home.html">Home</a></li>
+                        <li class="mb-2"><a href="/about.html">About Us</a></li>
+                        <li class="mb-2"><a href="/service.html">Services</a></li>
+                        <li class="mb-2"><a href="/projects">Projects</a></li>
+                        <li class="mb-2"><a href="/blog">Blog</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-lg-3 mb-4">
                     <h5>Services</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="individual-house-construction.html">Individual House</a></li>
-                        <li class="mb-2"><a href="villa-construction.html">Villa Construction</a></li>
-                        <li class="mb-2"><a href="apartment-construction.html">Apartment Construction</a></li>
-                        <li class="mb-2"><a href="commercial-building-construction.html">Commercial Building</a></li>
-                        <li class="mb-2"><a href="residential-project-development.html">Project Development</a></li>
-                        <li class="mb-2"><a href="architectural-structural-design.html">Architectural Design</a></li>
-                        <li><a href="turnkey-interior-solutions.html">Turnkey Interiors</a></li>
+                        <li class="mb-2"><a href="/individual-house-construction.html">Individual House</a></li>
+                        <li class="mb-2"><a href="/villa-construction.html">Villa Construction</a></li>
+                        <li class="mb-2"><a href="/apartment-construction.html">Apartment Construction</a></li>
+                        <li class="mb-2"><a href="/commercial-building-construction.html">Commercial Building</a></li>
+                        <li class="mb-2"><a href="/residential-project-development.html">Project Development</a></li>
+                        <li class="mb-2"><a href="/architectural-structural-design.html">Architectural Design</a></li>
+                        <li><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">

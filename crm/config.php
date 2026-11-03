@@ -22,7 +22,7 @@ try {
             PDO::ATTR_EMULATE_PREPARES => false
         ]
     );
-} catch (PDOException $e) {
+} catch (Throwable $e) {
     $pdo = null;
 }
 
@@ -46,4 +46,3 @@ function generateSlug($title) {
     $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title)));
     return trim($slug, '-');
 }
-?>
