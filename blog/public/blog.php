@@ -277,8 +277,29 @@ $blog_desc = get_setting('blog_description', 'Expert guides on residential const
             .blog-hero h1 { font-size: clamp(28px, 5vw, 38px) !important; }
             .dropdown:hover > .dropdown-menu { display: none !important; }
             .dropdown-menu.show { display: block !important; }
-            .dropdown-menu.mega { position: static; width: 100%; }
-            .mega-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-item.dropdown .dropdown-menu.show,
+            .dropdown-menu.show,
+            #servicesToggle + .dropdown-menu.show {
+                display: block !important;
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 8px !important;
+                box-shadow: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 1px solid #eee;
+                border-radius: 12px;
+            }
+            .dropdown-menu.mega { position: static; float: none; width: 100%; max-width: 100%; margin-top: 8px; box-shadow: none; border: 1px solid #eee; padding: 12px; }
+            .navbar-collapse { padding: 14px 0 8px; }
+            .nav-link { margin: 0; padding: 11px 8px; }
+            .navbar-collapse > .btn-consult { width: 100%; margin-top: 10px; }
+            .mega-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+            .mega-item { padding: 10px 6px; }
+
         }
         @media (max-width: 767.98px) {
             p { text-align: left; }
@@ -306,31 +327,31 @@ $blog_desc = get_setting('blog_description', 'Expert guides on residential const
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html"><img src="../image/dreambrixs.png" alt="DreamBrixs"></a>
+            <a class="navbar-brand" href="/home.html"><img src="/image/dreambrixs.png" alt="DreamBrixs"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="servicesToggle" role="button" aria-expanded="false">Services</a>
                         <div class="dropdown-menu mega">
                             <div class="mega-grid">
-                                <div class="mega-item"><i class="fas fa-home"></i><a href="../individual-house-construction.html">Individual House</a></div>
-                                <div class="mega-item"><i class="fas fa-building"></i><a href="../villa-construction.html">Villa Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-city"></i><a href="../apartment-construction.html">Apartment Construction</a></div>
-                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="../commercial-building-construction.html">Commercial Building</a></div>
-                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="../residential-project-development.html">Project Development</a></div>
-                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="../architectural-structural-design.html">Architectural Design</a></div>
-                                <div class="mega-item"><i class="fas fa-couch"></i><a href="../turnkey-interior-solutions.html">Turnkey Interiors</a></div>
+                                <div class="mega-item"><i class="fas fa-home"></i><a href="/individual-house-construction.html">Individual House</a></div>
+                                <div class="mega-item"><i class="fas fa-building"></i><a href="/villa-construction.html">Villa Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-city"></i><a href="/apartment-construction.html">Apartment Construction</a></div>
+                                <div class="mega-item"><i class="fas fa-briefcase"></i><a href="/commercial-building-construction.html">Commercial Building</a></div>
+                                <div class="mega-item"><i class="fas fa-project-diagram"></i><a href="/residential-project-development.html">Project Development</a></div>
+                                <div class="mega-item"><i class="fas fa-drafting-compass"></i><a href="/architectural-structural-design.html">Architectural Design</a></div>
+                                <div class="mega-item"><i class="fas fa-couch"></i><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></div>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../projects.php">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link active" href="<?= e(blog_list_url()) ?>">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
                 </ul>
-                <a href="../contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
+                <a href="/contact.html" class="btn btn-consult">GET A FREE CONSULTATION</a>
             </div>
         </div>
     </nav>
@@ -459,26 +480,26 @@ $blog_desc = get_setting('blog_description', 'Expert guides on residential const
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <img src="../image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
+                    <img src="/image/dreambrixs.png" alt="DreamBrixs" class="footer-logo">
                     <p class="small" style="line-height:1.7;">We build with expertise and innovation, creating residential spaces that reflect quality, reliability and lasting architectural value across Chennai, Tamil Nadu.</p>
                 </div>
                 <div class="col-lg-2 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../index.html">Home</a></li>
-                        <li class="mb-2"><a href="../about.html">About Us</a></li>
-                        <li class="mb-2"><a href="../projects.php">Projects</a></li>
+                        <li class="mb-2"><a href="/home.html">Home</a></li>
+                        <li class="mb-2"><a href="/about.html">About Us</a></li>
+                        <li class="mb-2"><a href="/projects">Projects</a></li>
                         <li class="mb-2"><a href="<?= e(blog_list_url()) ?>">Blog</a></li>
-                        <li><a href="../contact.html">Contact Us</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <h5>Services</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../individual-house-construction.html">Individual House</a></li>
-                        <li class="mb-2"><a href="../villa-construction.html">Villa Construction</a></li>
-                        <li class="mb-2"><a href="../apartment-construction.html">Apartment Construction</a></li>
-                        <li><a href="../turnkey-interior-solutions.html">Turnkey Interiors</a></li>
+                        <li class="mb-2"><a href="/individual-house-construction.html">Individual House</a></li>
+                        <li class="mb-2"><a href="/villa-construction.html">Villa Construction</a></li>
+                        <li class="mb-2"><a href="/apartment-construction.html">Apartment Construction</a></li>
+                        <li><a href="/turnkey-interior-solutions.html">Turnkey Interiors</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 mb-4">
@@ -504,6 +525,88 @@ $blog_desc = get_setting('blog_description', 'Expert guides on residential const
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('show', window.pageYOffset > 300), { passive: true });
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Services Dropdown Toggle (Mobile & Laptop)
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('servicesToggle');
+            const menu = toggle ? toggle.nextElementSibling : document.querySelector('.dropdown-menu.mega');
+            if (!toggle || !menu) return;
+
+            function isMobile() {
+                return window.innerWidth < 992;
+            }
+
+            function openMenu() {
+                menu.classList.add('show');
+                if (isMobile()) {
+                    menu.style.cssText = 'display:block !important; position:static !important; width:100% !important; float:none !important; transform:none !important; margin-top:8px !important; box-shadow:none !important; opacity:1 !important; visibility:visible !important;';
+                } else {
+                    menu.style.cssText = 'display:block !important;';
+                }
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                menu.classList.remove('show');
+                menu.style.cssText = '';
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            // Click toggles menu on both mobile and laptop
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (menu.classList.contains('show')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Clicking outside closes the dropdown
+            document.addEventListener('click', function (e) {
+                if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close when navbar collapses
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse) {
+                navbarCollapse.addEventListener('hidden.bs.collapse', closeMenu);
+            }
+
+            // Desktop hover with safety delay buffer
+            const dropdown = toggle.closest('.dropdown');
+            if (dropdown) {
+                let hideTimer = null;
+                dropdown.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                        openMenu();
+                    }
+                });
+                dropdown.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+                menu.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                    }
+                });
+                menu.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

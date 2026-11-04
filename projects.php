@@ -488,12 +488,28 @@ function getProjectImageUrl($p) {
         }
         @media (max-width: 991.98px) {
             .dropdown:hover > .dropdown-menu { display: none !important; }
-            .dropdown-menu.show { display: block !important; }
-            .dropdown-menu.mega { position: static; float: none; width: 100%; margin-top: 8px; box-shadow: none; border: 1px solid #eee; }
+            .nav-item.dropdown .dropdown-menu.show,
+            .dropdown-menu.show,
+            #servicesToggle + .dropdown-menu.show {
+                display: block !important;
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 8px !important;
+                box-shadow: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 1px solid #eee;
+                border-radius: 12px;
+            }
+            .dropdown-menu.mega { position: static; float: none; width: 100%; max-width: 100%; margin-top: 8px; box-shadow: none; border: 1px solid #eee; padding: 12px; }
             .navbar-collapse { padding: 14px 0 8px; }
             .nav-link { margin: 0; padding: 11px 8px; }
             .navbar-collapse > .btn-consult { width: 100%; margin-top: 10px; }
-            .mega-grid { grid-template-columns: repeat(2, 1fr); }
+            .mega-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+            .mega-item { padding: 10px 6px; }
             .proj-hero { min-height: 52vh; padding: 60px 0 40px; }
             .proj-hero h1 { font-size: clamp(32px, 5vw, 42px) !important; }
             .filter-wrap { border-radius: 24px; padding: 16px; }
@@ -553,7 +569,7 @@ function getProjectImageUrl($p) {
                     <li class="nav-item"><a class="nav-link" href="/home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="servicesToggle" role="button" aria-expanded="false">Services</a>
                         <div class="dropdown-menu mega">
                             <div class="mega-grid">
                                 <div class="mega-item"><i class="fas fa-home"></i><a href="/individual-house-construction.html">Individual House</a></div>
@@ -744,6 +760,88 @@ function getProjectImageUrl($p) {
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('show', window.pageYOffset > 300), { passive: true });
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Services Dropdown Toggle (Mobile & Laptop)
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('servicesToggle');
+            const menu = toggle ? toggle.nextElementSibling : document.querySelector('.dropdown-menu.mega');
+            if (!toggle || !menu) return;
+
+            function isMobile() {
+                return window.innerWidth < 992;
+            }
+
+            function openMenu() {
+                menu.classList.add('show');
+                if (isMobile()) {
+                    menu.style.cssText = 'display:block !important; position:static !important; width:100% !important; float:none !important; transform:none !important; margin-top:8px !important; box-shadow:none !important; opacity:1 !important; visibility:visible !important;';
+                } else {
+                    menu.style.cssText = 'display:block !important;';
+                }
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                menu.classList.remove('show');
+                menu.style.cssText = '';
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            // Click toggles menu on both mobile and laptop
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (menu.classList.contains('show')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Clicking outside closes the dropdown
+            document.addEventListener('click', function (e) {
+                if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close when navbar collapses
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse) {
+                navbarCollapse.addEventListener('hidden.bs.collapse', closeMenu);
+            }
+
+            // Desktop hover with safety delay buffer
+            const dropdown = toggle.closest('.dropdown');
+            if (dropdown) {
+                let hideTimer = null;
+                dropdown.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                        openMenu();
+                    }
+                });
+                dropdown.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+                menu.addEventListener('mouseenter', function () {
+                    if (!isMobile()) {
+                        clearTimeout(hideTimer);
+                    }
+                });
+                menu.addEventListener('mouseleave', function () {
+                    if (!isMobile()) {
+                        hideTimer = setTimeout(function () {
+                            closeMenu();
+                        }, 350);
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
