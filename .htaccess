@@ -3,6 +3,17 @@ RewriteBase /
 Options -MultiViews
 
 # ============================================================
+# PREVENT BROWSER CACHING OF DYNAMIC HTML/PHP PAGES
+# ============================================================
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# ============================================================
 # PROJECTS
 # ============================================================
 RewriteRule ^projects/?$ projects.php [L,QSA]
