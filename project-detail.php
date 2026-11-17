@@ -55,6 +55,226 @@ if (!empty($pdo)) {
 
 // 2. Fallback project catalog if DB is empty or project not yet in DB
 $fallbackProjects = [
+    'two-unit-duplex-residential-development-paruthipattu' => [
+        'id' => 10,
+        'title' => 'Two-Unit Duplex Residential Development – Paruthipattu',
+        'slug' => 'two-unit-duplex-residential-development-paruthipattu',
+        'category_name' => 'Residential Project Development',
+        'cat_slug' => 'residential-development',
+        'location' => 'Paruthipattu, Chennai',
+        'year' => '2026',
+        'status' => 'Ongoing',
+        'built_up_area' => '3,500 sq.ft',
+        'plot_size' => '1,600 sq.ft',
+        'configuration' => 'G+1 (2 units, 3BHK)',
+        'duration' => '5 Months',
+        'materials' => 'Initial civil and structural development, contemporary façade elements, cantilever balconies, customised pergola features, architectural detailing and quality execution',
+        'testimonial' => '"Delivered with high-precision engineering, architectural excellence, and turnkey development capabilities." — Landowner & Client',
+        'short_description' => 'Complete design and construction of two individual duplex houses for sale, incorporating contemporary architectural design, modern exterior elevations and quality construction with functional residential spaces.',
+        'detailed_description' => 'Undertook the complete design and construction of a residential development comprising two individual duplex houses at Paruthipattu, developed with a focus on modern architecture, functionality and quality execution.<br><br>The project involves comprehensive construction works, from initial civil and structural development to architectural detailing, exterior elevation design and finishing works. The design incorporates contemporary façade elements, cantilever balconies, customised pergola features and carefully planned residential spaces.<br><br>Special attention was given to structural integrity, space utilisation, construction quality and exterior aesthetics to create well-designed, functional and market-ready residential properties.<br><br>This project showcases our capabilities in delivering complete residential developments, combining architectural planning, construction expertise and execution under one roof.',
+        'seo_title' => 'Two-Unit Duplex Residential Development – Paruthipattu | DreamBrixs',
+        'seo_description' => 'Explore the Two-Unit Duplex Residential Development at Paruthipattu by DreamBrixs. Complete design and turnkey construction of modern duplex residences.',
+        'features' => [
+            'Two individual duplex houses in a single development',
+            'Contemporary façade elements with cantilever balconies',
+            'Customised pergola features and modern exterior elevations',
+            'Optimized space utilisation and structural integrity',
+            'Complete civil, structural, architectural and finishing execution',
+            'Market-ready residential properties built for quality and functionality'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960b93.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee87bb1.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960e6c.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee87e32.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88060.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88299.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee8849f.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee887ba.jpeg'],
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88a03.jpeg']
+        ],
+        'extra_data' => ['bhk' => '3 BHK', 'floors' => 'G+1']
+    ],
+    'cafe' => [
+        'id' => 11,
+        'title' => 'CAFE',
+        'slug' => 'cafe',
+        'category_name' => 'Commercial Building',
+        'cat_slug' => 'commercial-building',
+        'location' => 'BESANT NAGAR, Chennai',
+        'year' => '2026',
+        'status' => 'Ongoing',
+        'built_up_area' => '3,200 sq.ft',
+        'plot_size' => '2,400 sq.ft',
+        'configuration' => 'G + 1 Commercial Cafe Space',
+        'duration' => '6 Months',
+        'materials' => 'Reinforced concrete frame, open rooftop framing, premium ceramic flooring, custom pergola, weather-resistant exterior finishes',
+        'testimonial' => '"Exceptional execution for our beachfront commercial cafe in Besant Nagar." — Client',
+        'short_description' => 'Contemporary architectural design and turnkey construction of a vibrant commercial café in Besant Nagar.',
+        'detailed_description' => 'Comprehensive civil construction and architectural detailing for a modern cafe in Besant Nagar, designed with functional open seating, rooftop customer spaces, and durable commercial finishes.',
+        'seo_title' => 'CAFE | Commercial Construction in Besant Nagar, Chennai | DreamBrixs',
+        'seo_description' => 'Explore the CAFE commercial construction project in Besant Nagar by DreamBrixs.',
+        'features' => [
+            'High-footfall beachfront retail cafe design',
+            'Open-air rooftop seating & structural steel pergola',
+            'Heavy-duty MEP & kitchen utility provisions',
+            'Contemporary glass and concrete facade'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af164b9cbefe.jpeg']
+        ],
+        'extra_data' => ['floors' => 'G + 1']
+    ],
+    'individual-duplex-house' => [
+        'id' => 12,
+        'title' => 'Individual duplex house',
+        'slug' => 'individual-duplex-house',
+        'category_name' => 'Individual House Construction',
+        'cat_slug' => 'individual-house',
+        'location' => 'Valasaravakkam, Chennai',
+        'year' => '2025',
+        'status' => 'Completed',
+        'built_up_area' => '2,800 sq.ft',
+        'plot_size' => '1,800 sq.ft',
+        'configuration' => 'G + 1 Duplex Residence',
+        'duration' => '10 Months',
+        'materials' => 'Fe550D TMT, crystalline waterproofing, premium vitrified tiles, teak main door, toughened glass balcony railing',
+        'testimonial' => '"DreamBrixs built our duplex home with excellent finishing and complete peace of mind." — Homeowner',
+        'short_description' => 'A modern two-storey individual duplex house featuring contemporary elevation, spacious balcony, and functional planning.',
+        'detailed_description' => 'Complete turnkey design and construction of an individual duplex residence in Valasaravakkam, Chennai. Crafted with modern architectural elevation, Vaastu-compliant layouts, and robust civil execution.',
+        'seo_title' => 'Individual Duplex House | Valasaravakkam, Chennai | DreamBrixs',
+        'seo_description' => 'Explore the Individual Duplex House construction project in Valasaravakkam by DreamBrixs.',
+        'features' => [
+            'Vaastu-compliant duplex floor plan',
+            'Contemporary exterior elevation with glass balcony railings',
+            'Covered ground-level car parking & security gate',
+            'Premium interior electrical & sanitary fittings'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6ae494276c734.jpeg']
+        ],
+        'extra_data' => ['bhk' => '3 BHK', 'floors' => 'G + 1']
+    ],
+    'multi-storey-residential-apartment-construction' => [
+        'id' => 13,
+        'title' => 'Multi-Storey Residential Apartment Construction',
+        'slug' => 'multi-storey-residential-apartment-construction',
+        'category_name' => 'Apartment Construction',
+        'cat_slug' => 'apartment',
+        'location' => 'Porur, Chennai',
+        'year' => '2024',
+        'status' => 'Completed',
+        'built_up_area' => '16,000 sq.ft',
+        'plot_size' => '5,400 sq.ft',
+        'configuration' => 'Stilt + 4 Floors Residential Block',
+        'duration' => '16 Months',
+        'materials' => 'Fe550D rebar, M25/M30 RMC concrete, automated elevator with ARD, anti-carbonation exterior paint',
+        'testimonial' => '"On-time delivery and solid structural construction quality by DreamBrixs." — Apartment Association',
+        'short_description' => 'Multi-storey residential apartment construction in Porur with optimized FSI, dedicated stilt parking, and modern ventilation.',
+        'detailed_description' => 'Complete civil and architectural construction of a multi-storey residential apartment block in Porur, Chennai. Features spacious residential units, stilt car parking, automatic lift, and robust fire/safety systems.',
+        'seo_title' => 'Multi-Storey Residential Apartment Construction | Porur | DreamBrixs',
+        'seo_description' => 'Explore the Multi-Storey Residential Apartment Construction project in Porur by DreamBrixs.',
+        'features' => [
+            'Stilt + 4 multi-family residential building',
+            'Automatic lift with ARD backup',
+            'Dedicated stilt car parking bays',
+            'Rainwater harvesting and 24/7 water supply infrastructure'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6bef1c6aa4.jpeg']
+        ],
+        'extra_data' => ['floors' => 'Stilt + 4']
+    ],
+    'multi-commercial-building---kfc-outlet' => [
+        'id' => 14,
+        'title' => 'Multi commercial building - KFC outlet',
+        'slug' => 'multi-commercial-building---kfc-outlet',
+        'category_name' => 'Commercial Building',
+        'cat_slug' => 'commercial-building',
+        'location' => 'Alwarthirunagar, Chennai',
+        'year' => '2019',
+        'status' => 'Completed',
+        'built_up_area' => '18,500 sq.ft',
+        'plot_size' => '6,000 sq.ft',
+        'configuration' => 'Multi-Storey Commercial Retail Complex',
+        'duration' => '14 Months',
+        'materials' => 'Heavy-duty RCC frame, commercial structural glazing, heavy commercial electrical substations, commercial HVAC infrastructure',
+        'testimonial' => '"Prime high-visibility commercial asset delivered with institutional-grade construction standards." — Promoter',
+        'short_description' => 'High-visibility multi-storey commercial development housing prominent brands including KFC.',
+        'detailed_description' => 'Multi-storey commercial development at Alwarthirunagar, Chennai, engineered for heavy commercial footfall, prominent street facade visibility, and seamless operational utilities for major food & retail chains.',
+        'seo_title' => 'Multi Commercial Building - KFC Outlet | Alwarthirunagar | DreamBrixs',
+        'seo_description' => 'Explore the Multi Commercial Building with KFC outlet in Alwarthirunagar built by DreamBrixs.',
+        'features' => [
+            'Prominent main-road commercial street frontage',
+            'High-spec commercial MEP & fire safety systems',
+            'Heavy load-bearing floor slabs for retail & dining',
+            'Dedicated customer parking & service access'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c1cfa885f.jpeg']
+        ],
+        'extra_data' => ['floors' => 'G + 3']
+    ],
+    'multi-storey-commercial-building' => [
+        'id' => 15,
+        'title' => 'Multi-Storey Commercial Building',
+        'slug' => 'multi-storey-commercial-building',
+        'category_name' => 'Commercial Building',
+        'cat_slug' => 'commercial-building',
+        'location' => 'LAKSHMI NAGAR, Chennai',
+        'year' => '2015',
+        'status' => 'Completed',
+        'built_up_area' => '22,000 sq.ft',
+        'plot_size' => '7,200 sq.ft',
+        'configuration' => 'Multi-Storey Commercial Showroom & Office Tower',
+        'duration' => '18 Months',
+        'materials' => 'Grade-A RCC structural framing, full-height DGU glass facade, passenger elevators, 100% power backup',
+        'testimonial' => '"A premier landmark showroom building on the main artery road." — Building Owner',
+        'short_description' => 'Multi-storey commercial showroom tower housing Häfele Design Studio, Sony Center, and prime retail.',
+        'detailed_description' => 'Prominent commercial retail and showroom building at Lakshmi Nagar, Chennai. Designed for flagship retail experience with panoramic structural glass facades, column-free showroom floors, and executive corporate spaces.',
+        'seo_title' => 'Multi-Storey Commercial Building | Lakshmi Nagar | DreamBrixs',
+        'seo_description' => 'Explore the Multi-Storey Commercial Building housing Häfele and Sony Center in Lakshmi Nagar built by DreamBrixs.',
+        'features' => [
+            'Full structural glass curtain wall elevation',
+            'High-ceiling showroom floor plates',
+            'Accommodates Häfele Design Studio & Sony Center',
+            'Full DG power backup and passenger elevators'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4acec8e12f.jpeg']
+        ],
+        'extra_data' => ['floors' => 'G + 3']
+    ],
+    'independent-residential-house' => [
+        'id' => 16,
+        'title' => 'Independent Residential House',
+        'slug' => 'independent-residential-house',
+        'category_name' => 'Individual House Construction',
+        'cat_slug' => 'individual-house',
+        'location' => 'Virugambakkam, Chennai',
+        'year' => '2010',
+        'status' => 'Completed',
+        'built_up_area' => '2,400 sq.ft',
+        'plot_size' => '1,600 sq.ft',
+        'configuration' => 'G + 1 Independent Residence',
+        'duration' => '8 Months',
+        'materials' => 'Quality brick masonry, reinforced concrete slabs, teak woodwork, anti-termite treatment',
+        'testimonial' => '"Built to stand the test of time. Over a decade later, the house remains structurally flawless." — Homeowner',
+        'short_description' => 'Long-lasting independent residential house built with solid civil engineering in Virugambakkam.',
+        'detailed_description' => 'Individual two-storey residence constructed in Virugambakkam, Chennai. Showcases DreamBrixs enduring construction quality, traditional craftsmanship, and enduring structural durability.',
+        'seo_title' => 'Independent Residential House | Virugambakkam | DreamBrixs',
+        'seo_description' => 'Explore the Independent Residential House project in Virugambakkam built by DreamBrixs.',
+        'features' => [
+            'Two-level independent residential house',
+            'Private secure compound wall and gate',
+            'Vaastu-compliant residential floor plan',
+            'Durable construction built to last decades'
+        ],
+        'images' => [
+            ['image_path' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c39bd5624.jpeg']
+        ],
+        'extra_data' => ['bhk' => '3 BHK', 'floors' => 'G + 1']
+    ],
     'grand-crest-residence' => [
         'id' => 1,
         'title' => 'The Grand Crest Residence',

@@ -986,6 +986,23 @@
             color: #555;
         }
 
+        .project-meta .status-badge {
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .project-meta .status-completed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .project-meta .status-ongoing {
+            background: #fff8e1;
+            color: #f57c00;
+        }
+
         /* FAQ */
         .faq-item {
             background: #fff;
@@ -1811,7 +1828,9 @@
                     style="color:var(--accent-yellow); letter-spacing:1.5px; text-align:center;">PORTFOLIO</p>
                 <h2 class="fw-bold">Recent Individual House Projects</h2>
             </div>
-            <div class="row g-4" id="projectsContainer"></div>
+            <div class="row g-4 justify-content-center" id="projectsContainer"></div>
+            <div class="text-center mt-4"><a href="projects.php?category=individual-house" class="btn btn-consult">View All Individual Houses <i
+                        class="fas fa-arrow-right"></i></a></div>
         </div>
     </section>
 
@@ -2138,44 +2157,27 @@
 
         const projects = [
             {
-                title: "Modern Duplex Residence",
-                location: "Anna Nagar West, Chennai",
-                year: "2024",
-                area: "3,200 sq.ft",
-                type: "4 BHK Duplex",
+                title: "Individual duplex house",
+                location: "Valasaravakkam, Chennai",
+                year: "2025",
+                area: "2,800 sq.ft",
+                type: "Duplex House Construction",
                 status: "Completed",
-                description: "A contemporary multi-generational residence featuring geometric terracotta screens, double-height living spaces, and Vastu-compliant planning. Engineered with Fe550D TMT and crystalline waterproofing.",
+                description: "Modern multi-storey individual duplex house at Valasaravakkam, featuring contemporary exterior elevation, private balcony, spacious interior layouts, and high-quality civil and structural execution.",
                 images: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
-                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6ae494276c734.jpeg"
                 ]
             },
             {
-                title: "Courtyard Residence",
-                location: "Kotturpuram, Chennai",
-                year: "2023",
-                area: "2,850 sq.ft",
-                type: "3 BHK Independent House",
+                title: "Independent Residential House",
+                location: "Virugambakkam, Chennai",
+                year: "2010",
+                area: "2,400 sq.ft",
+                type: "Independent Residence",
                 status: "Completed",
-                description: "Urban tropical home centered around an open rainwater harvesting courtyard. Features cross-ventilation, warm timber finishes, and complete Vastu alignment.",
+                description: "Quality constructed independent residential residence in Virugambakkam, engineered with robust RCC framework, functional space planning, secure boundary, and long-lasting structural durability.",
                 images: [
-                    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800",
-                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800"
-                ]
-            },
-            {
-                title: "Contemporary Home",
-                location: "Boat Club Road, Chennai",
-                year: "2024",
-                area: "4,100 sq.ft",
-                type: "5 BHK Luxury Residence",
-                status: "Completed",
-                description: "Double-height living atrium with Italian marble flooring and brass joinery. Designed for coastal humidity with multi-barrier waterproofing.",
-                images: [
-                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
-                    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
-                    "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af6c39bd5624.jpeg"
                 ]
             }
         ];
@@ -2184,14 +2186,16 @@
             const container = document.getElementById('projectsContainer');
             if (!container) return;
             container.innerHTML = projects.map((p, i) => `
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${i * 100}">
+                <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="${i * 100}">
                     <div class="project-corp" role="button" tabindex="0" onclick="openProject(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProject(${i});}">
                         <img src="${p.images[0]}" alt="${p.title}">
                         <div class="project-corp-body">
                             <h6>${p.title}</h6>
+                            <div class="small text-muted mb-2">${p.location.split(',')[0]} &bull; ${p.year}</div>
                             <div class="project-meta">
                                 <span>${p.type}</span>
                                 <span>${p.area}</span>
+                                <span class="status-badge ${p.status && p.status.toLowerCase() === 'ongoing' ? 'status-ongoing' : 'status-completed'}">${p.status}</span>
                             </div>
                         </div>
                     </div>
@@ -2214,9 +2218,14 @@
                 <div class="mb-2"><strong>Year:</strong> ${p.year}</div>
                 <div class="mb-2"><strong>Area:</strong> ${p.area}</div>
                 <div class="mb-2"><strong>Type:</strong> ${p.type}</div>
-                <div class="mb-2"><strong>Status:</strong> ${p.status}</div>
+                <div class="mb-2"><strong>Status:</strong> <span class="badge ${p.status && p.status.toLowerCase() === 'ongoing' ? 'bg-warning text-dark' : 'bg-success'}">${p.status}</span></div>
                 <p class="mt-3 mb-0">${p.description}</p>
             `;
+            const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+            modal.show();
+            const carousel = bootstrap.Carousel.getOrCreateInstance(document.getElementById('modalCarousel'));
+            carousel.to(0);
+        }
             const modal = new bootstrap.Modal(document.getElementById('projectModal'));
             modal.show();
             const carousel = bootstrap.Carousel.getOrCreateInstance(document.getElementById('modalCarousel'));

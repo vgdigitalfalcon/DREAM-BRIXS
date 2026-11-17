@@ -187,6 +187,9 @@
             font-size: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid #f0f0f0;
         }
         .project-meta span { background: #f4f4f4; padding: 4px 12px; border-radius: 20px; color: #555; font-weight: 500; }
+        .project-meta .status-badge { font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+        .project-meta .status-completed { background: #e8f5e9; color: #2e7d32; }
+        .project-meta .status-ongoing { background: #fff8e1; color: #f57c00; }
 
         /* Modal Image Gallery - Responsive Grid (No Carousel / No Scrollbars) */
         .modal-gallery-grid {
@@ -944,6 +947,8 @@
                 <h2 class="fw-bold">Recent Commercial Projects</h2>
             </div>
             <div class="row g-4" id="projectsContainer"></div>
+            <div class="text-center mt-4"><a href="projects.php?category=commercial-building" class="btn btn-consult">View All Commercial Projects <i
+                        class="fas fa-arrow-right"></i></a></div>
         </div>
     </section>
 
@@ -1152,45 +1157,45 @@
         window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('show', window.pageYOffset > 300), { passive: true });
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Exclusively Commercial Construction Projects (Residential strictly filtered out)
+        // Exclusively Commercial Construction Projects from DreamBrixs Portfolio
         const projects = [
             {
-                title: "Nexus Prime Corporate Hub",
-                location: "Guindy, Chennai",
-                year: "2025",
-                builtUp: "38,000 sq.ft",
-                type: "Grade-A Corporate Office Park",
-                category: "Commercial Construction",
-                description: "A premier multi-tenant commercial IT office block featuring double basement car parking, high-performance DGU structural glass facade, and complete central MEP infrastructure.",
+                title: "CAFE",
+                location: "Besant Nagar, Chennai",
+                year: "2026",
+                builtUp: "3,200 sq.ft",
+                type: "Commercial Cafe & Retail",
+                category: "Commercial Building",
+                status: "Ongoing",
+                description: "Contemporary architectural design and turnkey commercial construction for a high-traffic café in Besant Nagar, featuring open-air rooftop spaces, modern aesthetic detailing, and customized interior flow.",
                 images: [
-                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
-                    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af164b9cbefe.jpeg"
                 ]
             },
             {
-                title: "Zenith Retail & Business Plaza",
-                location: "Anna Nagar, Chennai",
-                year: "2024",
-                builtUp: "24,500 sq.ft",
-                type: "High-Visibility Commercial Showroom & Offices",
-                category: "Commercial Construction",
-                description: "Prominent commercial high-street building with expansive column-free showroom spaces on lower levels and executive corporate offices on upper floors.",
+                title: "Multi commercial building - KFC outlet",
+                location: "Alwarthirunagar, Chennai",
+                year: "2019",
+                builtUp: "18,500 sq.ft",
+                type: "Commercial Retail Complex",
+                category: "Commercial Building",
+                status: "Completed",
+                description: "Multi-storey commercial development housing renowned retail brands and food outlets including KFC, engineered with robust RCC structural framework, high visibility street facade, and heavy-duty utility infrastructure.",
                 images: [
-                    "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800",
-                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af6c1cfa885f.jpeg"
                 ]
             },
             {
-                title: "Horizon Commercial Tower",
-                location: "OMR, Chennai",
-                year: "2024",
-                builtUp: "46,000 sq.ft",
-                type: "Mixed-Use Tech & Commercial Complex",
-                category: "Commercial Construction",
-                description: "State-of-the-art commercial center with automated lift banks, full DG backup, EV charging stations, and flexible floor plate designs along the IT corridor.",
+                title: "Multi-Storey Commercial Building",
+                location: "Lakshmi Nagar, Chennai",
+                year: "2015",
+                builtUp: "22,000 sq.ft",
+                type: "Commercial Showroom & Retail Tower",
+                category: "Commercial Building",
+                status: "Completed",
+                description: "High-visibility commercial retail tower featuring expansive glass curtain walls and modern showroom spaces accommodating premium brand showrooms including Häfele Design Studio and Sony Center.",
                 images: [
-                    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
-                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4acec8e12f.jpeg"
                 ]
             }
         ];
@@ -1211,6 +1216,7 @@
                             <div class="project-meta">
                                 <span>${p.category}</span>
                                 <span>${p.builtUp}</span>
+                                <span class="status-badge ${p.status && p.status.toLowerCase() === 'ongoing' ? 'status-ongoing' : 'status-completed'}">${p.status}</span>
                             </div>
                         </div>
                     </div>
@@ -1235,6 +1241,7 @@
                     <div class="col-sm-6"><strong><i class="far fa-calendar-alt text-warning me-1"></i> Year:</strong> ${p.year}</div>
                     <div class="col-sm-6"><strong><i class="fas fa-vector-square text-warning me-1"></i> Built-up:</strong> ${p.builtUp}</div>
                     <div class="col-sm-6"><strong><i class="fas fa-tag text-warning me-1"></i> Category:</strong> ${p.category}</div>
+                    <div class="col-sm-6"><strong><i class="fas fa-info-circle text-warning me-1"></i> Status:</strong> <span class="badge ${p.status && p.status.toLowerCase() === 'ongoing' ? 'bg-warning text-dark' : 'bg-success'}">${p.status}</span></div>
                 </div>
                 <h6 class="fw-bold mb-2 text-dark">Project Overview</h6>
                 <p class="text-muted small mb-0" style="line-height:1.75; text-align:justify;">${p.description}</p>

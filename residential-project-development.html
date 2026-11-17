@@ -678,6 +678,23 @@
             color: #555;
         }
 
+        .project-meta .status-badge {
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .project-meta .status-completed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .project-meta .status-ongoing {
+            background: #fff8e1;
+            color: #f57c00;
+        }
+
         /* ========== 08. WHY PARTNER ========== */
         .why-item {
             display: flex;
@@ -1997,15 +2014,15 @@
     </section>
 
     <!-- ========== 07. PROJECTS ========== -->
-    <section class="py-5">
+    <section class="py-5" id="projects">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <p class="text-uppercase small mb-1"
                     style="color:var(--accent-yellow); letter-spacing:1.5px; text-align:center;">PORTFOLIO</p>
                 <h2 class="fw-bold">Signature Developments Delivered</h2>
             </div>
-            <div class="row g-4" id="projectsContainer"></div>
-            <div class="text-center mt-4"><a href="projects.php" class="btn btn-consult">View All Developments <i
+            <div class="row g-4 justify-content-center" id="projectsContainer"></div>
+            <div class="text-center mt-4"><a href="projects.php?category=residential-development" class="btn btn-consult">View All Developments <i
                         class="fas fa-arrow-right"></i></a></div>
         </div>
     </section>
@@ -2540,61 +2557,36 @@
         // Projects data
         const projects = [
             {
-                title: "The Crest Boutique Apartments",
-                location: "Anna Nagar, Chennai",
-                year: "2025",
-                builtUp: "14,500 sq.ft",
-                plot: "4,800 sq.ft (2 Grounds)",
-                config: "Stilt + 4 Floors (8 Units &bull; 3 BHK)",
-                type: "Boutique Luxury Apartment",
-                duration: "16 months",
-                description: "A premium Stilt+4 residential apartment block in Anna Nagar engineered for maximum FSI utilization, zero common walls, and effortless two-car stilt parking per resident.",
-                features: ["8-Passenger automatic lift with ARD", "100% DG power backup for common areas & flats", "EV charging point in every stilt bay", "Terrace garden & solar lighting", "Video door phone & 24/7 CCTV surveillance", "Rainwater harvesting & underground 25,000L sump"],
-                materials: "Fe550D TMT rebar, M30 RMC concrete, crystalline waterproofing, UPVC soundproof windows, branded vitrified tiles",
-                clientNote: "Delivered on schedule with CMDA Completion Certificate and outstanding finish quality.",
+                title: "Two-Unit Duplex Residential Development – Paruthipattu",
+                location: "Paruthipattu, Chennai",
+                year: "2026",
+                builtUp: "3,500 sq.ft",
+                plot: "1,600 sq.ft",
+                config: "G+1 (2 Units &bull; 3 BHK)",
+                type: "Residential Project Development",
+                duration: "5 Months",
+                status: "Ongoing",
+                description: "Undertook the complete design and construction of a residential development comprising two individual duplex houses at Paruthipattu, developed with a focus on modern architecture, functionality and quality execution.<br><br>The project involves comprehensive construction works, from initial civil and structural development to architectural detailing, exterior elevation design and finishing works. The design incorporates contemporary façade elements, cantilever balconies, customised pergola features and carefully planned residential spaces.<br><br>Special attention was given to structural integrity, space utilisation, construction quality and exterior aesthetics to create well-designed, functional and market-ready residential properties.<br><br>This project showcases our capabilities in delivering complete residential developments, combining architectural planning, construction expertise and execution under one roof.",
+                features: [
+                    "Two individual duplex houses in a single development",
+                    "Contemporary façade elements with cantilever balconies",
+                    "Customised pergola features & modern exterior elevations",
+                    "Optimized space utilisation and structural integrity",
+                    "Complete civil, structural, architectural and finishing execution under one roof",
+                    "Market-ready residential properties built for quality and functionality"
+                ],
+                materials: "Initial civil and structural development, contemporary façade elements, cantilever balconies, customised pergola features, architectural detailing and quality execution",
+                clientNote: "Delivered with high-precision engineering, architectural excellence, and turnkey development capabilities.",
                 images: [
-                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
-                    "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=800",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800"
-                ]
-            },
-            {
-                title: "Aura Residency (One-Per-Floor)",
-                location: "Adyar, Chennai",
-                year: "2024",
-                builtUp: "11,200 sq.ft",
-                plot: "3,600 sq.ft",
-                config: "Stilt + 4 Floors (4 Exclusive 4 BHK Units)",
-                type: "Ultra-Luxury Floor Residences",
-                duration: "15 months",
-                description: "An exclusive 1-unit-per-floor luxury residential complex with private elevator lobby access, expansive sit-out balconies, and coastal-grade anti-carbonation exterior finishes.",
-                features: ["Private key-card elevator access to each floor", "Italian marble living & dining flooring", "Double-glazed acoustic facade windows", "Automated gate & sensor-lit stilt parking", "Centralized hydro-pneumatic water system"],
-                materials: "Grade 550D TMT, multi-barrier waterproofing, teakwood main doors, Kohler/Grohe sanitaryware",
-                clientNote: "Every floor feels like an independent sky-villa. Exceptional craftsmanship by DreamBrixs.",
-                images: [
-                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-                    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800",
-                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800"
-                ]
-            },
-            {
-                title: "GreenView Enclave",
-                location: "OMR, Chennai",
-                year: "2024",
-                builtUp: "21,000 sq.ft",
-                plot: "7,200 sq.ft (3 Grounds)",
-                config: "Stilt + 4 Floors (16 Units &bull; 2 & 3 BHK)",
-                type: "Multi-Family Residential Complex",
-                duration: "18 months",
-                description: "High-efficiency multi-family apartment complex designed for young IT families on OMR. Features Vastu-compliant 2 & 3 BHK layouts, wide corridors, and low-maintenance common infrastructure.",
-                features: ["Dual lift cores for smooth traffic flow", "Dedicated visitor parking & security cabin", "Rooftop multipurpose party deck", "Solar water heating & energy-efficient LED common lighting", "Fire-safety compliant staircase & hydrant system"],
-                materials: "Certified Fe550D TMT, AAC thermal blocks for cooler interiors, branded vitrified flooring, weather-shield exterior coats",
-                clientNote: "All 16 units achieved immediate occupancy with high rental yield and zero post-handover snags.",
-                images: [
-                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
-                    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800",
-                    "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800"
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960b93.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee87bb1.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960e6c.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee87e32.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88060.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88299.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee8849f.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee887ba.jpeg",
+                    "https://dreambrixs.com/crm/uploads/projects/proj_6af4b1ee88a03.jpeg"
                 ]
             }
         ];
@@ -2604,7 +2596,7 @@
             const container = document.getElementById('projectsContainer');
             if (!container) return;
             container.innerHTML = projects.map((p, i) => `
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${i * 100}">
+                <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="${i * 100}">
                     <div class="project-corp" role="button" tabindex="0" aria-label="View details for ${p.title}" onclick="openProject(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProject(${i});}">
                         <div class="project-corp-img-wrap">
                             <span class="project-tag-overlay"><i class="fas fa-map-marker-alt me-1"></i>${p.location.split(',')[0]}</span>
@@ -2612,8 +2604,12 @@
                         </div>
                         <div class="project-corp-body">
                             <h6 class="mb-1">${p.title}</h6>
-                            <div class="small text-muted">${p.config}</div>
-                            <div class="project-meta"><span>${p.year}</span><span>${p.builtUp}</span></div>
+                            <div class="small text-muted mb-2">${p.config}</div>
+                            <div class="project-meta">
+                                <span>${p.year}</span>
+                                <span>${p.builtUp}</span>
+                                <span class="status-badge ${p.status && p.status.toLowerCase() === 'completed' ? 'status-completed' : 'status-ongoing'}">${p.status || 'Ongoing'}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2636,7 +2632,8 @@
             const details = document.getElementById('modalDetails');
             details.innerHTML = `
                 <div class="mb-2"><span class="project-detail-label">Location:</span> ${p.location}</div>
-                <div class="mb-2"><span class="project-detail-label">Year Completed:</span> ${p.year}</div>
+                <div class="mb-2"><span class="project-detail-label">Status:</span> <span class="status-badge ${p.status && p.status.toLowerCase() === 'completed' ? 'status-completed' : 'status-ongoing'}">${p.status || 'Ongoing'}</span></div>
+                <div class="mb-2"><span class="project-detail-label">Year:</span> ${p.year}</div>
                 <div class="mb-2"><span class="project-detail-label">Total Built-up Area:</span> ${p.builtUp}</div>
                 <div class="mb-2"><span class="project-detail-label">Land Extent:</span> ${p.plot}</div>
                 <div class="mb-2"><span class="project-detail-label">Configuration:</span> ${p.config}</div>

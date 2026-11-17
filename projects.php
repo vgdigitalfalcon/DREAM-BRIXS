@@ -52,17 +52,95 @@ if (!empty($pdo)) {
 
 if (empty($categories)) {
     $categories = [
-        ['name' => 'Individual House', 'slug' => 'individual-house'],
-        ['name' => 'Villa Construction', 'slug' => 'villa-construction'],
-        ['name' => 'Apartment Construction', 'slug' => 'apartment-construction'],
-        ['name' => 'Commercial Construction', 'slug' => 'commercial-construction'],
-        ['name' => 'Project Development', 'slug' => 'project-development'],
-        ['name' => 'Turnkey Interiors', 'slug' => 'turnkey-interiors']
+        ['name' => 'Individual House Construction', 'slug' => 'individual-house'],
+        ['name' => 'Villa Construction', 'slug' => 'villa'],
+        ['name' => 'Apartment Construction', 'slug' => 'apartment'],
+        ['name' => 'Residential Project Development', 'slug' => 'residential-development'],
+        ['name' => 'Architectural & Structural Design', 'slug' => 'architectural-design'],
+        ['name' => 'Turnkey Interior Solutions', 'slug' => 'interiors'],
+        ['name' => 'Commercial Building', 'slug' => 'commercial-building']
     ];
 }
 
 if (empty($projects)) {
     $allFallbackProjects = [
+        [
+            'title' => 'Two-Unit Duplex Residential Development – Paruthipattu',
+            'slug' => 'two-unit-duplex-residential-development-paruthipattu',
+            'location' => 'Paruthipattu',
+            'year' => '2026',
+            'category_name' => 'Residential Project Development',
+            'cat_slug' => 'residential-development',
+            'status' => 'Ongoing',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960b93.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4b1c960b93.jpeg'
+        ],
+        [
+            'title' => 'CAFE',
+            'slug' => 'cafe',
+            'location' => 'BESANT NAGAR',
+            'year' => '2026',
+            'category_name' => 'Commercial Building',
+            'cat_slug' => 'commercial-building',
+            'status' => 'Ongoing',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af164b9cbefe.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af164b9cbefe.jpeg'
+        ],
+        [
+            'title' => 'Individual duplex house',
+            'slug' => 'individual-duplex-house',
+            'location' => 'Valasaravakkam',
+            'year' => '2025',
+            'category_name' => 'Individual House Construction',
+            'cat_slug' => 'individual-house',
+            'status' => 'Completed',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6ae494276c734.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6ae494276c734.jpeg'
+        ],
+        [
+            'title' => 'Multi-Storey Residential Apartment Construction',
+            'slug' => 'multi-storey-residential-apartment-construction',
+            'location' => 'Porur',
+            'year' => '2024',
+            'category_name' => 'Apartment Construction',
+            'cat_slug' => 'apartment',
+            'status' => 'Completed',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6bef1c6aa4.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6bef1c6aa4.jpeg'
+        ],
+        [
+            'title' => 'Multi commercial building - KFC outlet',
+            'slug' => 'multi-commercial-building---kfc-outlet',
+            'location' => 'Alwarthirunagar',
+            'year' => '2019',
+            'category_name' => 'Commercial Building',
+            'cat_slug' => 'commercial-building',
+            'status' => 'Completed',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c1cfa885f.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c1cfa885f.jpeg'
+        ],
+        [
+            'title' => 'Multi-Storey Commercial Building',
+            'slug' => 'multi-storey-commercial-building',
+            'location' => 'LAKSHMI NAGAR',
+            'year' => '2015',
+            'category_name' => 'Commercial Building',
+            'cat_slug' => 'commercial-building',
+            'status' => 'Completed',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4acec8e12f.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af4acec8e12f.jpeg'
+        ],
+        [
+            'title' => 'Independent Residential House',
+            'slug' => 'independent-residential-house',
+            'location' => 'Virugambakkam',
+            'year' => '2010',
+            'category_name' => 'Individual House Construction',
+            'cat_slug' => 'individual-house',
+            'status' => 'Completed',
+            'main_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c39bd5624.jpeg',
+            'any_image' => 'https://dreambrixs.com/crm/uploads/projects/proj_6af6c39bd5624.jpeg'
+        ],
         [
             'title' => 'The Grand Crest Residence',
             'slug' => 'grand-crest-residence',
